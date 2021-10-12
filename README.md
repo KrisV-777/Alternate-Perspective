@@ -2,7 +2,7 @@
 Rework of Skyrims Vanilla Intro in an attempt to allow a fast &amp; immersive entry into the game without harming the Main Quests integrity whatsoever
 
 When starting a new Game, you will spawn into a small Inn Room resembling Part of Helgens Inn. In it a small Dragon awaits you allowing you to choose between a quanity of different Options to define your Intro Sequence.
-No matter the Intro you choose, Helgen will be a regular Town with a Shop and townsfolk going on their day.*
+No matter the Intro you choose, until you start the Mainquest Helgen will be a regular Town with a Shop and townsfolk going on their day.*
 
 *Note that until the Intro is started, the Civil War Quest will be disabled as this Quest Line builds on the expectation that Helgen is destroyed.
 *An Overview of Intro Sequences is listed in a Sticky on the Forum of the Nexus Page.
