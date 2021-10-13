@@ -24,15 +24,23 @@ TG01.SetStage(40)
 GameHour.Value = 13
 ; Alias_Skjor.GetReference().MoveTo(Alias_SkjorLoc.GetReference())
 
-  int Parts = myOutfit.GetNumParts()
-  While(Parts)
-    Parts -= 1
-    Form equipMe = myOutfit.GetNthPart(Parts)
-    If(equipMe)
-      Player.AddItem(equipMe, abSilent = true)
-      Player.EquipItemEx(equipMe, equipSound = false)
-    EndIf
-  EndWhile
+; int Parts = myOutfit.GetNumParts()
+; While(Parts)
+;   Parts -= 1
+;   Form equipMe = myOutfit.GetNthPart(Parts)
+;   If(equipMe)
+;     Player.AddItem(equipMe, abSilent = true)
+;     Player.EquipItemEx(equipMe, equipSound = false)
+;   EndIf
+; EndWhile
+
+int i = 0
+While(i < uniform.length)
+  Player.AddItem(uniform[i], abSilent = true)
+  Player.EquipItemEx(uniform[i], equipSound = false)
+  i += 1
+EndWhile
+
 Player.AddItem(shield, abSilent = true)
 Player.AddItem(sword, abSilent = true)
 
@@ -55,3 +63,5 @@ Outfit Property myOutfit  Auto
 WEAPON Property Sword  Auto  
 
 Armor Property SHIELD  Auto  
+
+Armor[] Property uniform Auto

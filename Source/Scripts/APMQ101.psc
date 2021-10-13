@@ -2,10 +2,13 @@ Scriptname APMQ101 extends Quest
 
 import Game
 ; ---------------------------- Properties
+APMain Property Main Auto
 MQ101QuestScript Property qstScr Auto
 APStartIntroBedScript Property introBedScr Auto
 Actor Property PlayerRef Auto
 Outfit Property FarmClothesOutfit02 Auto
+Armor Property ClothesFarmClothes02 Auto
+Armor property ClothesFarmBoots02 Auto
 ObjectReference Property startMarker Auto
 ; ImageSpaceModifier Property FadeToBlackBackImod Auto
 ImageSpaceModifier Property FadeToBlackHoldImod Auto
@@ -32,17 +35,11 @@ Function GameStart()
   ; FadeToBlackHoldImod.Apply()
   PrecacheCharGen()
   DisablePlayerControls(abMovement = True, abFighting = True, abCamSwitch = True, abLooking = True, abSneaking = True, abMenu = True, abJournalTabs = True) ; .. so the player doesnt do anything stupid
-  ; Want to avoid editing Player alias directly zzz
   PlayerRef.RemoveAllItems()
-  int Parts = FarmClothesOutfit02.GetNumParts()
-  While(Parts)
-    Parts -= 1
-    Form equipMe = FarmClothesOutfit02.GetNthPart(Parts)
-    If(equipMe)
-      PlayerRef.AddItem(equipMe, abSilent = true)
-      PlayerRef.EquipItemEx(equipMe, equipSound = false)
-    EndIf
-  EndWhile
+  PlayerRef.AddItem(ClothesFarmClothes02, 1, true)
+  PlayerRef.EquipItemEx(ClothesFarmClothes02, equipSOund = false)
+  PlayerRef.AddItem(ClothesFarmBoots02, 1, true)
+  PlayerRef.EquipItemEx(ClothesFarmBoots02, equipSOund = false)
   PlayerRef.MoveTo(startMarker)
   While(!PlayerRef.Is3DLoaded())
     Utility.Wait(0.05)
@@ -51,7 +48,6 @@ Function GameStart()
   ; Utility.Wait(1.5)
   ShowRaceMenu()
   Utility.Wait(0.3) ; Will pause the script until Player exits RaceMenu
-
   charGenLight.Disable()
   qstScr.AddRaceSpells()
   Utility.Wait(0.1)

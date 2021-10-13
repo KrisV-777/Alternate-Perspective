@@ -12,15 +12,22 @@ Function Fragment_0()
 ;BEGIN CODE
 Actor Player = Game.GetPlayer()
 
-  int Parts = o.GetNumParts()
-  While(Parts)
-    Parts -= 1
-    Form equipMe = o.GetNthPart(Parts)
-    If(equipMe)
-      Player.AddItem(equipMe, abSilent = true)
-      Player.EquipItemEx(equipMe, equipSound = false)
-    EndIf
-  EndWhile
+; int Parts = o.GetNumParts()
+; While(Parts)
+;   Parts -= 1
+;   Form equipMe = o.GetNthPart(Parts)
+;   If(equipMe)
+;     Player.AddItem(equipMe, abSilent = true)
+;     Player.EquipItemEx(equipMe, equipSound = false)
+;   EndIf
+; EndWhile
+
+int i = 0
+While(i < uniform.length)
+  Player.AddItem(uniform[i], abSilent = true)
+  Player.EquipItemEx(uniform[i], equipSound = false)
+  i += 1
+EndWhile
 
 TG01.SetStage(30)
 Player.MoveTo(Alias_portLoc.GetReference())
@@ -34,3 +41,5 @@ EndFunction
 Quest Property TG01  Auto  
 
 Outfit Property o  Auto  
+
+Armor[] Property uniform Auto

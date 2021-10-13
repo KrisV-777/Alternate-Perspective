@@ -1,0 +1,50 @@
+<?xml version='1.0'?><!-- Game is either sse, tesv, or fo4 -->
+<PapyrusProject xmlns="PapyrusProject.xsd" 
+    Flags="TESV_Papyrus_Flags.flg" 
+    Game="sse" 
+    Output="Scripts" 
+    Optimize="true" 
+    Anonymize="true" 
+    Zip="true">
+    <Variables>
+        <Variable Name="ModName" Value="AlternatePerspective"/>
+        <Variable Name="ThisProject" Value="."/>
+        <Variable Name="Rel" Value=".\.releases"/>
+        <Variable Name="MO2" Value=".."/>
+        <Variable Name="Ver" Value="2.4"/>
+    </Variables>
+    <Imports>
+        <Import>@ThisProject\Source\Scripts</Import>
+        <Import>@MO2\Creation Kit\Source\Scripts</Import>
+        <!-- Github -->
+        <Import>https://github.com/eeveelo/PapyrusUtil/tree/master/Scripts/Source</Import>
+        <Import>@MO2\PapyrusUtil SE - Modders Scripting Utility Functions\Source\Scripts</Import>
+        <!-- Generic Ressources -->
+        <Import>@MO2\UIExtensions\Source\Scripts</Import>
+        <!-- Base Game -->
+        <Import>C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\Source\Scripts</Import>
+    </Imports>
+    <Folders>
+        <Folder>@ThisProject\Source\Scripts</Folder>
+    </Folders>
+    <ZipFiles Output="@Rel">
+        <ZipFile Name="@ModName - @Ver" RootDir="@ThisProject" Compression="deflate">
+        	<Include>AlternatePerspective.esp</Include>
+            <Include>meshes</Include>
+            <Include>Scripts</Include>
+            <Include>Source</Include>
+            <Include>textures</Include>
+            <Include>LICENSE</Include>
+        </ZipFile>
+        <ZipFile Name="@ModName - @Ver LE" RootDir="@ThisProject" Compression="deflate">
+        	<Include>AlternatePerspective.esp</Include>
+            <Include Path="meshes\Actors\Character\FaceGenData\FaceGeom\AlternatePerspective.esp">meshesLE\Actors</Include>
+            <Include Path="meshes\AlternatePerspective\architecture\farmhouse\interior">meshesLE\AlternatePerspective\architecture\farmhouse\interior</Include>
+            <Include Path="meshes\AlternatePerspective\clutter\helgen">meshesLE\AlternatePerspective\clutter\helgen</Include>
+            <Include>Scripts</Include>
+            <Include>Source</Include>
+            <Include>textures</Include>
+            <Include>LICENSE</Include>
+        </ZipFile>
+    </ZipFiles>
+</PapyrusProject>

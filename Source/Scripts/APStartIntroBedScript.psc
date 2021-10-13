@@ -3,11 +3,11 @@ Scriptname APStartIntroBedScript extends ObjectReference
 bool Property StartIntro = false Auto Hidden
 
 Actor Property PlayerRef Auto
+Quest Property MQ101 Auto
 ObjectReference Property helgenInnMarker Auto
 ImageSpaceModifier Property FadeToBlackHoldImod Auto
 ImageSpaceModifier Property Woozy Auto
 GlobalVariable Property GameHour Auto
-Scene Property PreIntro Auto
 Idle Property WakeUp Auto
 
 Event OnActivate(ObjectReference akActionRef)
@@ -23,10 +23,10 @@ Event OnSleepStart(float afSleepStartTime, float afDesiredSleepEndTime)
     Game.DisablePlayerControls(ablooking = true, abCamSwitch = true)
     Game.ForceFirstPerson()
     FadeToBlackHoldImod.PopTo(Woozy)
-    PreIntro.ForceStart()
+    MQ101.SetStage(2)
 		Utility.Wait(0.2)
     PlayerRef.PlayIdle(WakeUp)
-    Utility.Wait(2.5)
+    Utility.Wait(3.5)
     Game.EnablePlayerControls()
   EndIf
 EndEvent

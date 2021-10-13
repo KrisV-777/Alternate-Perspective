@@ -38,14 +38,21 @@ TG01.SetStage(30)
 TG01.SetStage(40)
 TG01.SetStage(50)
 
-int Parts = myOutfit.GetNumParts()
-While(Parts)
-  Parts -= 1
-  Form equipMe = myOutfit.GetNthPart(Parts)
-  If(equipMe)
-    Player.AddItem(equipMe, abSilent = true)
-    Player.EquipItemEx(equipMe, equipSound = false)
-  EndIf
+; int Parts = myOutfit.GetNumParts()
+; While(Parts)
+;   Parts -= 1
+;   Form equipMe = myOutfit.GetNthPart(Parts)
+;   If(equipMe)
+;     Player.AddItem(equipMe, abSilent = true)
+;     Player.EquipItemEx(equipMe, equipSound = false)
+;   EndIf
+; EndWhile
+
+int i = 0
+While(i < uniform.length)
+  Player.AddItem(uniform[i], abSilent = true)
+  Player.EquipItemEx(uniform[i], equipSound = false)
+  i += 1
 EndWhile
 Player.AddItem(dagger, abSilent = true)
 
@@ -65,6 +72,8 @@ Quest Property DB01  Auto
 Outfit Property myOutfit  Auto
 
 WEAPON Property Dagger  Auto
+
+Armor[] Property uniform Auto
 
 Quest Property DarkBrotherhoodQuest  Auto  
 

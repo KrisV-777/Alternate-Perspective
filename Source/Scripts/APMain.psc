@@ -26,7 +26,8 @@ Quest entryQuest = none
 
 Function destroyHelgen() global
 	Debug.Trace("[Alternate Perspective] destroying Helgen..")
-	QF_MQ101_0003372B q101scr = Quest.GetQuest("MQ101") as QF_MQ101_0003372B
+	
+	QF_MQ101_0003372B q101scr = Game.GetFormFromFile(0x03372B, "Skyrim.esm") as QF_MQ101_0003372B
 	; Stage10
 	; disable stuff around Helgen & temp end gate
 	q101scr.FortNeugradEnableMarker.Disable()
@@ -256,63 +257,5 @@ Function enterGame()
 	HousePurchase.SetStage(5)
 	StringListClear(none, "APS_mainListIntern")
 	SendModEvent("AP_GameStarted")
-EndFunction
-
-; =============================================================
-; ======================================== UNUSED
-; =============================================================
-;/ Check the Conditions on this Option. Returns an empty string if the Option is invalid, otherwise return the Options name /;
-string Function checkOptionCondition(string that)
-	If(StringUtil.GetNthChar(that, 0) != "~")
-		return that
-	EndIf
-	Actor Player = Game.GetPlayer()
-	; tmp[0] = type of check
-	; tmp[1] = Name of Suboption
-	string[] tmp = StringUtil.Split(that, "~")
-	; Debug.Trace("AP Menu Option: 0 = " + tmp[0] + " 1 = " + tmp[1])
-	tmp = StringUtil.Split(tmp[0], ":")
-	Form[] val = FormListToArray(none, tmp[1])
-	If(!(val.length > 0))
-		Debug.Trace("Formlist under Key " + tmp[0] + " is empty.")
-		return tmp[1]
-	EndIf
-	If(tmp[0] == "Faction")
-		If(val[0] as Faction == none)
-			"Formlist under Key " + tmp[0] + " doesn't contain a Faction."
-			return ""
-		EndIf
-		int i = 0
-		While(i < val.length)
-			If(Player.IsInFaction(val[i] as Faction))
-				return tmp[1]
-			EndIf
-			i += 1
-		EndWhile
-	ElseIf(tmp[0] == "Keyword")
-		If(val[0] as Keyword == none)
-			"Formlist under Key " + tmp[0] + " doesn't contain a Keyword."
-			return tmp[1]
-		EndIf
-		int i = 0
-		While(i < val.length)
-			If(Player.HasKeyword(val[i] as Keyword))
-				return tmp[1]
-			EndIf
-			i += 1
-		EndWhile
-	ElseIf(tmp[0] == "Race")
-		If(val[0] as Race == none)
-			"Formlist under Key " + tmp[0] + " doesn't contain a Race."
-			return tmp[1]
-		EndIf
-		int i = 0
-		While(i < val.length)
-			If(Player.GetRace() == val[i] as Race)
-				return tmp[1]
-			EndIf
-			i += 1
-		EndWhile
-	EndIf
-	return tmp[1]
+	Game.RequestSave()
 EndFunction
