@@ -2090,6 +2090,8 @@ myStormcloakPrisoner04.PlayIdle(IdleCartPrisonerASway)
 myStormcloakPrisoner01.PlayIdle(IdleCartPrisonerCSway)
 
 myUlfric.EquipItem(ArmorGag)
+
+Alias_ImperialSoldierHelgen02.GetActorReference().ResetHealthAndLimbs()
 Debug.Trace("AP: Finished Setting up Intro")
 ;END CODE
 EndFunction
@@ -2522,6 +2524,8 @@ APMQ101 kmyQuest = __temp as APMQ101
 ;BEGIN CODE
 ; AP Specific Stuff that should happen when MQ101 stops, yay
 ; Stage 1.000
+Alias_ImperialSoldierHelgen01.GetReference().Disable()
+Alias_ImperialSoldierHelgen02.GetReference().Disable()
 (Game.GetFormFromFile(0x1E301D, "AlternatePerspective.esp") as APMain).StopQuest()
 ;END CODE
 EndFunction
