@@ -2,7 +2,6 @@ Scriptname APMQ101 extends Quest
 
 import Game
 ; ---------------------------- Properties
-APMain Property Main Auto
 MQ101QuestScript Property qstScr Auto
 APStartIntroBedScript Property introBedScr Auto
 Actor Property PlayerRef Auto

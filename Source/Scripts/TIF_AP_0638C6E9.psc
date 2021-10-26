@@ -6,7 +6,7 @@ Scriptname TIF_AP_0638C6E9 Extends TopicInfo Hidden
 Function Fragment_1(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-choice = split.show()
+int choice = split.show()
 
 If choice == 0
 return
@@ -39,7 +39,5 @@ EndFunction
 Quest Property MQ101  Auto  
 
 Message Property Split  Auto  
-
-int choice
 
 ImageSpaceModifier Property WarpTime  Auto  

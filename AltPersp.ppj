@@ -19,10 +19,8 @@
     <Imports>
         <Import>@ThisProject\Source\Scripts</Import>
         <Import>@MO2\Creation Kit\Source\Scripts</Import>
-        <!-- Github -->
-        <Import>https://github.com/eeveelo/PapyrusUtil/tree/master/Scripts/Source</Import>
+        <!-- Ressources -->
         <Import>@MO2\PapyrusUtil SE - Modders Scripting Utility Functions\Source\Scripts</Import>
-        <!-- Generic Ressources -->
         <Import>@MO2\UIExtensions\Source\Scripts</Import>
         <!-- Base Game -->
         <Import>C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\Source\Scripts</Import>
@@ -37,6 +35,7 @@
             <Include>meshes</Include>
             <Include>Scripts</Include>
             <Include>Seq</Include>
+            <Include>Sound</Include>
             <Include>Source</Include>
             <Include>textures</Include>
             <Include>LICENSE</Include>
@@ -48,6 +47,7 @@
             <Include Path="meshes\AlternatePerspective\clutter\helgen">meshesLE\AlternatePerspective\clutter\helgen</Include>
             <Include>Scripts</Include>
             <Include>Seq</Include>
+            <Include>Sound</Include>
             <Include>Source</Include>
             <Include>textures</Include>
             <Include>LICENSE</Include>
@@ -71,7 +71,11 @@
         <ZipFile Name="@ModName 2.3.1 - TUDM" RootDir="@patches" Compression="deflate">
         	<Include>TUDM</Include>
         </ZipFile>
-        <!-- Add Ons -->
+        <!-- Add Ons SFW -->
+        <ZipFile Name="No Startroom Markers" RootDir="@sfw" Compression="deflate">
+        	<Include>No Startroom Markers</Include>
+        </ZipFile>
+        <!-- Add Ons NSFW -->
         <ZipFile Name="Sold Out 2.0" RootDir="@nsfw" Compression="deflate">
         	<Include>Sold Out</Include>
         </ZipFile>
