@@ -8,6 +8,7 @@ Actor Property PlayerRef Auto
 Outfit Property FarmClothesOutfit02 Auto
 Armor Property ClothesFarmClothes02 Auto
 Armor property ClothesFarmBoots02 Auto
+MiscObject Property Gold001 Auto
 ObjectReference Property startMarker Auto
 ; ImageSpaceModifier Property FadeToBlackBackImod Auto
 ImageSpaceModifier Property FadeToBlackHoldImod Auto
@@ -18,7 +19,7 @@ SoundCategory Property Master Auto
 ObjectReference Property charGenLight Auto
 ObjectReference Property titleSequenceMarker Auto
 {Marker to move the Player to during Title Sequence to (to get rid of the Subtitles)}
-ObjectReference Property knockDownMarker Auto
+ObjectReference Property knockDownMarker Auto Hidden
 {Where to port the Player after Title Sequence - BUGGED; OLD}
 ObjectReference Property kdMarker2 Auto
 {Where to port the Player after Title Sequence}
@@ -39,6 +40,7 @@ Function GameStart()
   PlayerRef.EquipItemEx(ClothesFarmClothes02, equipSOund = false)
   PlayerRef.AddItem(ClothesFarmBoots02, 1, true)
   PlayerRef.EquipItemEx(ClothesFarmBoots02, equipSOund = false)
+  PlayerRef.AddItem(Gold001, 72, true)
   PlayerRef.MoveTo(startMarker)
   While(!PlayerRef.Is3DLoaded())
     Utility.Wait(0.05)
@@ -95,7 +97,6 @@ Function knockoutPlayer()
   SetStage(145) ; destory Helgen
   Utility.Wait(35) ; Title Sequence Duration
   PlayerRef.MoveTo(kdMarker2, abMatchRotation = false) ; back to Helgen
-	FadeToBlackHoldImod.Apply()
   Utility.Wait(1)
   Master.UnMute()
   PlayerRef.ResetHealthAndLimbs() ; Heal in case Alduin hit the Player a few times
@@ -103,7 +104,7 @@ Function knockoutPlayer()
   Utility.Wait(4)
   PlayerRef.PlayIdle(TG05_GetUp)
   Utility.Wait(1.5)
-  Game.EnablePlayerControls(abFighting = false, abCamSwitch = true, abActivate = false)
+  ; Game.EnablePlayerControls(abFighting = false, abCamSwitch = true, abActivate = false) ; Moved to SF_MQ101DragonAttackScene1_000D0594
   ; Player should be free to move now & escape Helgen. Yay.
 EndFunction
 

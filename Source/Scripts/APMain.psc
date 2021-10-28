@@ -3,7 +3,7 @@ Scriptname APMain extends Quest Conditional
 import StorageUtil
 import PapyrusUtil
 ; ---------------------------- Properties
-UIListMenu Property UIList Auto
+UIListMenu Property UIList Auto Hidden
 Quest Property DialogueWhiterunGuardGateStop  Auto
 Quest Property HousePurchase Auto
 Quest Property MQ101 Auto
@@ -46,8 +46,6 @@ EndFunction
 ; =========================================================
 ; Startup
 Event OnInit()
-	Game.GetPlayer().AddItem(Gold001, 72, true)
-
 	string[] mainListUI = new string[12]
 	mainListUI[0] = " Default"
 	mainListUI[1] = "Random"
@@ -148,7 +146,7 @@ EndFunction
 ; ============================== ENTRANCE SELECTION
 ; =========================================================
 Function SetEntry()
-	UIList.ResetMenu()
+	UIList = UIExtensions.GetMenu("UIListMenu") as UIListMenu
 	; Reset the queue
 	string[] queue = StringListToArray(none, "APS_queue")
 	int p = 0
@@ -210,35 +208,28 @@ EndFunction
 Function enterGame()
 	Game.DisablePlayerControls()
 	FadeToBlackHoldImod.Apply()
-	bool doMoving = true
 	If(entryQuest == none)
-		If(defaultAlgorithm == 3) ; Skip Intro
-			doMoving = false
-			MQ101.SetStage(3)
-		ElseIf(defaultAlgorithm == 2) ; Quickstart Intro
-			doMoving = false
-			Game.GetPlayer().MoveTo(helgenInnMarker)
-			Utility.Wait(0.7)
-			introScene.Start()
-		Else ; Default no Quest
-			Game.GetPlayer().MoveTo(helgenInnMarker)
-		EndIf
+		Game.GetPlayer().MoveTo(helgenInnMarker)
 	ElseIf(entryQuest.Start() == false)
 		Game.GetPlayer().MoveTo(helgenInnMarker)
 	EndIf
 	Game.EnablePlayerControls()
-	If(doMoving)
-		int i = 0
-		While(i < startLocs.length)
-			questAliases[i].GetReference().MoveTo(startLocs[i])
-			i += 1
-		EndWhile
-	EndIf
 	FadeToBlackHoldImod.PopTo(FadeToBlackBackImod)
 	; Clean up the StorageUtil stuff since we dont need it anymore
+	SetActors()
+	Game.RequestSave()
+EndFunction
+
+; Called when Leaving the Start Cell or the Player uses the Classic Intro
+Function SetActors()
+	int i = 0
+	While(i < startLocs.length)
+		questAliases[i].GetReference().MoveTo(startLocs[i])
+		i += 1
+	EndWhile
 	StringListClear(none, "APS_mainListUI")
 	string[] mainString = StringListToArray(none, "APS_mainListIntern")
-	int i = 0
+	i = 0
 	While(i < mainString.length)
 		string[] subListUI = StringUtil.Split(mainString[i], "_")
 		string prefix = subListUI[0]
@@ -257,5 +248,4 @@ Function enterGame()
 	HousePurchase.SetStage(5)
 	StringListClear(none, "APS_mainListIntern")
 	SendModEvent("AP_GameStarted")
-	Game.RequestSave()
 EndFunction

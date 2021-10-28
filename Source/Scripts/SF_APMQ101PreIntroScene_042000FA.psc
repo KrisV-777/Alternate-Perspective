@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 5
+;NEXT FRAGMENT INDEX 7
 Scriptname SF_APMQ101PreIntroScene_042000FA Extends Scene Hidden
 
 ;BEGIN FRAGMENT Fragment_1
@@ -19,6 +19,14 @@ EndFunction
 Function Fragment_4()
 ;BEGIN CODE
 Matlara.EvaluatePackage()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
+;BEGIN CODE
+Game.EnablePlayerControls()
 ;END CODE
 EndFunction
 ;END FRAGMENT

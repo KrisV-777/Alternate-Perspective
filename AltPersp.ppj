@@ -75,6 +75,9 @@
         <ZipFile Name="No Startroom Markers" RootDir="@sfw" Compression="deflate">
         	<Include>No Startroom Markers</Include>
         </ZipFile>
+        <ZipFile Name="Classic Start - @Ver" RootDir="@sfw" Compression="deflate">
+        	<Include>Classic Start</Include>
+        </ZipFile>
         <!-- Add Ons NSFW -->
         <ZipFile Name="Sold Out 2.0" RootDir="@nsfw" Compression="deflate">
         	<Include>Sold Out</Include>

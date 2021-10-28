@@ -23,10 +23,10 @@ Event OnSleepStart(float afSleepStartTime, float afDesiredSleepEndTime)
     Game.DisablePlayerControls(ablooking = true, abCamSwitch = true)
     Game.ForceFirstPerson()
     FadeToBlackHoldImod.PopTo(Woozy)
-    MQ101.SetStage(2)
-		Utility.Wait(0.2)
+    MQ101.SetStage(3)
+    Utility.Wait(0.2)
     PlayerRef.PlayIdle(WakeUp)
-    Utility.Wait(3.5)
-    Game.EnablePlayerControls()
+    ; Utility.Wait(3)
+    ; Game.EnablePlayerControls() ; Moved to SF_APMQ101PreIntroScene_042000FA
   EndIf
 EndEvent
