@@ -16,15 +16,22 @@ While(i < 5)
 EndWhile
 CrimeFactions[1].ModCrimeGold(Utility.RandomInt(200, 400))
 
-i = ArmorStuddedSimpleOutfit.GetNumParts()
-While(i)
-  i -= 1
-  Form equipMe = ArmorStuddedSimpleOutfit.GetNthPart(i)
-  If(equipMe)
-    PlayerRef.AddItem(equipMe, abSilent = true)
-    PlayerRef.EquipItemEx(equipMe, equipSound = false)
-  EndIf
+i = 0
+While(i < uniform.length)
+  PlayerRef.AddItem(uniform[i], abSilent = true)
+  PlayerRef.EquipItem(uniform[i], abSilent = true)
+  i += 1
 EndWhile
+
+; i = ArmorStuddedSimpleOutfit.GetNumParts()
+; While(i)
+;   i -= 1
+;   Form equipMe = ArmorStuddedSimpleOutfit.GetNthPart(i)
+;   If(equipMe)
+;     PlayerRef.AddItem(equipMe, abSilent = true)
+;     PlayerRef.EquipItemEx(equipMe, equipSound = false)
+;   EndIf
+; EndWhile
 ;
 ; i = 0
 ; While(i < banditWeaponry.length)
@@ -54,3 +61,5 @@ LeveledItem[] Property banditWeaponry  Auto
 MiscObject Property Gold001  Auto
 
 Outfit Property ArmorStuddedSimpleOutfit Auto
+
+Armor[] Property uniform  Auto

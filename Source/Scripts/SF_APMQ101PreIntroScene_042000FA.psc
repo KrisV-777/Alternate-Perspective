@@ -9,8 +9,6 @@ Matlara.MoveTo(MatlaraStartMarker)
 Torri.MoveTo(TorriStartMarker)
 Torolf.MoveTo(TorolfStartMarker)
 GetOwningQuest().SetStage(5)
-
-SendModEvent("APIntroStart")
 ;END CODE
 EndFunction
 ;END FRAGMENT

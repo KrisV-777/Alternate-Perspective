@@ -2,34 +2,14 @@
 ;NEXT FRAGMENT INDEX 2
 Scriptname QF_APS_VampirePinemoonCave_063B50DE Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY Actor00
+;BEGIN ALIAS PROPERTY Actor02
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor00 Auto
+ReferenceAlias Property Alias_Actor02 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY MiscActor01000
+;BEGIN ALIAS PROPERTY MiscActor02001
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor03
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor03 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor01000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor00
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor00 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor01001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01001 Auto
+ReferenceAlias Property Alias_MiscActor02001 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY MiscActor01
@@ -37,14 +17,64 @@ ReferenceAlias Property Alias_MiscActor01001 Auto
 ReferenceAlias Property Alias_MiscActor01 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY MiscActor04000
+;BEGIN ALIAS PROPERTY MiscActor02000
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04000 Auto
+ReferenceAlias Property Alias_MiscActor02000 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY MiscActor03000000
+;BEGIN ALIAS PROPERTY MiscActor03001
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor03000000 Auto
+ReferenceAlias Property Alias_MiscActor03001 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Actor03
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Actor03 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY myLoc
+;ALIAS PROPERTY TYPE LocationAlias
+LocationAlias Property Alias_myLoc Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Actor00
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Actor00 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY MiscActor04000000
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MiscActor04000000 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY MiscActor01001
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MiscActor01001 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Actor04
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Actor04 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY MiscActor00000
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MiscActor00000 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY MiscActor01000
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MiscActor01000 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Player
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Player Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY MiscActor01000000
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MiscActor01000000 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY MiscActor00000000
@@ -52,9 +82,19 @@ ReferenceAlias Property Alias_MiscActor03000000 Auto
 ReferenceAlias Property Alias_MiscActor00000000 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Player
+;BEGIN ALIAS PROPERTY MiscActor00
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Player Auto
+ReferenceAlias Property Alias_MiscActor00 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Actor01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Actor01 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY MiscActor04000
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MiscActor04000 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY MiscActor02000000
@@ -67,46 +107,6 @@ ReferenceAlias Property Alias_MiscActor02000000 Auto
 ReferenceAlias Property Alias_MiscActor00001 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY myLoc
-;ALIAS PROPERTY TYPE LocationAlias
-LocationAlias Property Alias_myLoc Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor04000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor00000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor00000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor02
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor02 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor01
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor04
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor02001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02001 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor02
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02 Auto
-;END ALIAS PROPERTY
-
 ;BEGIN ALIAS PROPERTY MiscActor03
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_MiscActor03 Auto
@@ -117,19 +117,14 @@ ReferenceAlias Property Alias_MiscActor03 Auto
 ReferenceAlias Property Alias_MiscActor03000 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY MiscActor02000
+;BEGIN ALIAS PROPERTY MiscActor04
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02000 Auto
+ReferenceAlias Property Alias_MiscActor04 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY tpMark
+;BEGIN ALIAS PROPERTY MiscActor03000000
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_tpMark Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor03001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor03001 Auto
+ReferenceAlias Property Alias_MiscActor03000000 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY MiscActor04001
@@ -137,9 +132,14 @@ ReferenceAlias Property Alias_MiscActor03001 Auto
 ReferenceAlias Property Alias_MiscActor04001 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Actor04
+;BEGIN ALIAS PROPERTY MiscActor02
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor04 Auto
+ReferenceAlias Property Alias_MiscActor02 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY tpMark
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_tpMark Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN FRAGMENT Fragment_0
@@ -147,7 +147,7 @@ Function Fragment_0()
 ;BEGIN CODE
 Actor Player = Game.GetPlayer()
 
-; Player.RemoveAllitems()
+;/ Player.RemoveAllitems()
 int Parts = VampArmor.GetNumParts()
 While(Parts)
   Parts -= 1
@@ -158,11 +158,18 @@ While(Parts)
   EndIf
 EndWhile
 ; Player.AddItem(Gold001, Utility.RandomInt(75, 300), true)
+/;
+int i = 0
+While(i < uniform.length)
+  Player.AddItem(uniform[i], abSilent = true)
+  Player.EquipItem(uniform[i], abSilent = true)
+  i += 1
+EndWhile
 
 VampireQ.VampireChange(Player)
 
 Player.MoveTo(Alias_tpMark.GetReference())
-RegisterForModEvent("AP_IntroStart", "IntroStart")
+; RegisterForModEvent("AP_IntroStart", "IntroStart")
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -192,3 +199,5 @@ Outfit Property VampArmor  Auto
 MiscObject Property Gold001  Auto
 
 Message Property helpMsg  Auto  
+
+Armor[] Property uniform  Auto  

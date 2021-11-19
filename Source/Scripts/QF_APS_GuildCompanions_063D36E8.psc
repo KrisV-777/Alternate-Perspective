@@ -37,7 +37,7 @@ GameHour.Value = 13
 int i = 0
 While(i < uniform.length)
   Player.AddItem(uniform[i], abSilent = true)
-  Player.EquipItemEx(uniform[i], equipSound = false)
+  Player.EquipItem(uniform[i], abSilent = true)
   i += 1
 EndWhile
 

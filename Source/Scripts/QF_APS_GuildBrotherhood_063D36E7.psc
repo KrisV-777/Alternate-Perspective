@@ -51,7 +51,7 @@ TG01.SetStage(50)
 int i = 0
 While(i < uniform.length)
   Player.AddItem(uniform[i], abSilent = true)
-  Player.EquipItemEx(uniform[i], equipSound = false)
+  Player.EquipItem(uniform[i], abSilent = true)
   i += 1
 EndWhile
 Player.AddItem(dagger, abSilent = true)

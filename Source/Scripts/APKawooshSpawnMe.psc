@@ -14,14 +14,14 @@ Event OnCellLoad()
 EndEvent
 
 Event Spawning(string eventName, string strArg, float numArg, Form sender)
-  Debug.Trace("AP: Spawning Actor")
+  ; Debug.Trace("AP: Spawning Actor")
   ActorBase toPlace = fetchActorInstance(Waves[Wave])
   If(!toPlace)
     return
   EndIf
-  (Self as ObjectReference).PlaceAtMe(summonFX)
+  PlaceAtMe(summonFX)
   Utility.Wait(0.1)
-  ((Self as ObjectReference).PlaceActorAtMe(toPlace, 0)).AddSpell(DeathTrack)
+  (PlaceActorAtMe(toPlace, 0)).AddSpell(DeathTrack)
   Wave += 1
 EndEvent
 
@@ -32,7 +32,7 @@ ActorBase Function fetchActorInstance(LeveledActor instance)
   ElseIf(tmp as LeveledActor)
     return fetchActorInstance(tmp as LeveledActor)
   Else
-    Debug.Trace("AP: fetchActorInstance returned invalid Target")
+    ; Debug.Trace("AP: fetchActorInstance returned invalid Target")
     return none
   EndIf
 EndFunction
