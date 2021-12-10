@@ -22,8 +22,3 @@ This mod should have Priority over all conflicts. If you don't know how to do co
 
 # For Mod Authors
 Its possible to hook into Alternate Perspective to create your own Starting Scenarios. Read the Article on the Nexus Page for more Information
-
-# F.A.Q.
-- _Lore Friendly?_ - Yes, but also no. Alternate Perspective mostly operates in a greyzone, there is very little Information on Helgen and its people. The Info that is there has been respected - with the exception that the Execution may not happen on the 17th of Last Seed, 4E 201; and the Dragonborn wont be almost executed.
-- _Will unvoiced Dialogue be voiced?_ - Yes, once [xVASynth](https://www.nexusmods.com/skyrimspecialedition/mods/44184) has the necessary Voicemodels and Quality to voice all Dialogue.
-- _There is an empty House in Helgen, what's up with that?_ - Its intended to be used by Authors who wish to build something in Helgen. Helgen is very complicated and doesnt offer much space to build anything, so I left this little spot open for others to use
