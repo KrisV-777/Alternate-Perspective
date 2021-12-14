@@ -355,36 +355,51 @@ EndFunction
 ; ============================== ENTER GAME
 ; =========================================================
 Function enterGame()
+	; Get startcell
+	Actor Player = Game.GetPlayer()
+	Cell startcell = Player.GetParentCell()
+	; Start Mainquest
 	Game.DisablePlayerControls()
 	FadeToBlackHoldImod.Apply()
-	If(entryQuest == startingQuests[42])
-		If(startingQuests[42 + MQ105SkipMsg.Show()].Start())
-			return
-		Else
-			entryQuest = none
-		EndIf
-	EndIf
-	If(entryQuest == none)
+	; Start intro
+	If(entryQuest == startingQuests[42]) ; Dragonborn Skip to MQ105
+		int sq = 42 + MQ105SkipMsg.Show() ; 0 = Hadvar, 1 = Ralof
+		startingQuests[sq].Start()
+	ElseIf(entryQuest == none) ; default Quests
 		Game.GetPlayer().MoveTo(helgenInnMarker)
 	ElseIf(entryQuest.Start() == false)
 		Game.GetPlayer().MoveTo(helgenInnMarker)
 	EndIf
+	; Wait for the Player to leave the Starting Cell, then finish it up
+	int timeout = 0
+	While(Player.GetParentCell() == startcell && timeout < 100)
+		timeout += 1
+		Utility.Wait(0.2)
+	EndWhile
+	If(timeout == 100)
+		Debug.MessageBox("You seem to be stuck. I'll move you into the Helgen Inn D:\nNormally a starting Option is expected to move you out of this cell. If this happens every time you use this Starting Option, you should get in touch with the Author that implemented it.")
+		Game.GetPlayer().MoveTo(helgenInnMarker)
+	EndIf
 	Game.EnablePlayerControls()
 	FadeToBlackHoldImod.PopTo(FadeToBlackBackImod)
-	; Clean up the StorageUtil stuff since we dont need it anymore
 	SetActors()
 	Game.RequestSave()
 EndFunction
-; Called when Leaving the Start Cell or the Player uses the Classic Intro
+
 Function SetActors()
-	int i = 0
-	While(i < startLocs.length)
-		questAliases[i].GetReference().MoveTo(startLocs[i])
-		i += 1
-	EndWhile
-	StringListClear(none, "APS_mainListUI")
+	; Move Helgen NPC
+	If(IsRunning())
+		int i = 0
+		While(i < startLocs.length)
+			questAliases[i].GetReference().MoveTo(startLocs[i])
+			i += 1
+		EndWhile
+	EndIf
+	; Misc Stuff
+	HousePurchase.SetStage(5)
+	; Free StorageUtil Data
 	string[] mainString = StringListToArray(none, "APS_mainListIntern")
-	i = 0
+	int i = 0
 	While(i < mainString.length)
 		string[] subListUI = StringUtil.Split(mainString[i], "_")
 		string prefix = subListUI[0]
@@ -400,6 +415,6 @@ Function SetActors()
 		EndWhile
 		i += 1
 	EndWhile
-	HousePurchase.SetStage(5)
+	StringListClear(none, "APS_mainListUI")
 	StringListClear(none, "APS_mainListIntern")
 EndFunction

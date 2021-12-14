@@ -5,10 +5,10 @@ APMain Property Main  Auto
 Event OnTriggerEnter(ObjectReference akActionRef)
 	Actor PlayerRef = Game.GetPlayer()
   If(akActionRef == PlayerRef) ; In case the Dragon Buddy flies in here
-    Main.enterGame()
     GotoState("Done")
     Disable()
     Delete()
+    Main.enterGame()
   EndIf
 EndEvent
 

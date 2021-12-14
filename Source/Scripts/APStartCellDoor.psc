@@ -1,4 +1,5 @@
 Scriptname APStartCellDoor extends ObjectReference  
+{Unused}
 
 ObjectReference[] Property customStartLoc = none Auto
 {The Location(s) this Door should lead to}

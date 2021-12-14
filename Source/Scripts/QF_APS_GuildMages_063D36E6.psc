@@ -30,7 +30,9 @@ While(i < uniform.length)
 EndWhile
 
 TG01.SetStage(30)
-Player.MoveTo(Alias_portLoc.GetReference())
+ObjectReference p = Alias_portLoc.GetReference()
+Player.MoveTo(p)
+Player.SetAngle(p.X - 180, p.Y, p.Z)
 Stop()
 ;END CODE
 EndFunction
