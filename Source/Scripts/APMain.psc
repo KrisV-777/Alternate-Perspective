@@ -61,39 +61,40 @@ Event OnInit()
 	string[] mainListUI = new string[13]
 	mainListUI[0] = " Default"
 	mainListUI[1] = "Random"
-	mainListUI[2] = " Regular at an Inn"
-	mainListUI[3] = " From Overseas"
+	mainListUI[2] = " Regular at an inn"
+	mainListUI[3] = " From overseas"
 	mainListUI[4] = " A wanted criminal"
 	mainListUI[5] = " Robbed and barely alive"
 	mainListUI[6] = " Shipwrecked"
 	mainListUI[7] = " I live in my own home"
-	mainListUI[8] = " Part of a Vampire Clan"
+	mainListUI[8] = " Part of a vampire clan"
 	mainListUI[9] = " Member of the Forsworn"
-	mainListUI[10] = " I hunt in Hircine's Name"
-	mainListUI[11] = " Member of a Guild"
+	mainListUI[10] = " I hunt in Hircine's name"
+	mainListUI[11] = " Member of a guild"
 	mainListUI[12] = " The Dragonborn"
 
 
 	string[] mainString = new string[13]
 	mainString[0] = "APS_Pilgerer" ; Quickstart_SkipAlduin_SkipIntro
 	mainString[1] = "APS_Random"
-	mainString[2] =	"APSI_Random_The Bannared Mare_The Bee And Barb_The Winking Skeever_Silver-Blood Inn_Candlehearth Hall_Dead Man's Drink_Moorside Inn_The Frozen Hearth_Windpeak Inn_The Retching Netch_The Sleeping Giant Inn_Frostfruit Inn_Vilemyr Inn_Old Hroldan Inn_Four Shields Tavern_Nightgate Inn_Braidwood Inn"
+	mainString[2] =	"APSI_Random_The Bannered Mare_The Bee and Barb_The Winking Skeever_Silver-Blood Inn_Candlehearth Hall_Dead Man's Drink_Moorside Inn_The Frozen Hearth_Windpeak Inn_The Retching Netch_The Sleeping Giant Inn_Frostfruit Inn_Vilemyr Inn_Old Hroldan Inn_Four Shields Tavern_Nightgate Inn_Braidwood Inn"
 	mainString[3] = "APSD_Random_East Empire Trading Company_Windhelm Docks_Dawnstar's Shore_Raven Rock Docks"
 	mainString[4] = "APSW_Random_..in Whiterun (Whiterun)_..in the Rift (Riften)_..in the Pale (Dawnstar)_..in Winterhold (Winterhold)"
 	mainString[5] = "APSLfD_Random_..in the Rift (Riften)_..in the Reach (Markarth)_..in Winterhold (Winterhold)"
 	mainString[6] = "APSS_Shipwrecked"
 	mainString[7] = "APSH_Random_..in Whiterun_..in Solitude_..in Riften_..in Markarth"
-	mainString[8] = "APSV_Random_Pinemoon Cave_Bloodlet Throne_Movarth's Lair_Haermar's Shame"
+	mainString[8] = "APSV_Random_Pinemoon Cave_Bloodlet Throne_Movarth's Lair_Haemar's Shame"
 	mainString[9] = "APSFor_Forsworn"
 	mainString[10] = "APSW_Falkreath"
 	mainString[11] = "APSG_Random_College of Winterhold_Thieves Guild_Dark Brotherhood_Companions"
 	mainstring[12] = "APSM_Meeting the Greybeards"
 
+
 	StringListCopy(none, "APS_mainListUI", mainListUI)
 	StringListCopy(none, "APS_mainListIntern", mainString)
 
-	SetFormValue(none, "APSIThe Bannared Mare", startingQuests[0]) ; Inns
-	SetFormValue(none, "APSIThe Bee And Barb", startingQuests[1])
+	SetFormValue(none, "APSIThe Bannered Mare", startingQuests[0]) ; Inns
+	SetFormValue(none, "APSIThe Bee and Barb", startingQuests[1])
 	SetFormValue(none, "APSIThe Winking Skeever", startingQuests[2])
 	SetFormValue(none, "APSISilver-Blood Inn", startingQuests[3])
 	SetFormValue(none, "APSICandlehearth Hall", startingQuests[4])
@@ -134,7 +135,7 @@ Event OnInit()
 	SetFormValue(none, "APSVPinemoon Cave", startingQuests[33]) ; Vampire
 	SetFormValue(none, "APSVBloodlet Throne", startingQuests[34])
 	SetFormValue(none, "APSVMovarth's Lair", startingQuests[35])
-	SetFormValue(none, "APSVHaermar's Shame", startingQuests[36])
+	SetFormValue(none, "APSVHaemar's Shame", startingQuests[36])
 
 	SetFormValue(none, "APSForForsworn", startingQuests[44]) ; Forsworn
 
