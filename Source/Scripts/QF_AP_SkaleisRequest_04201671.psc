@@ -2,9 +2,9 @@
 ;NEXT FRAGMENT INDEX 5
 Scriptname QF_AP_SkaleisRequest_04201671 Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY Gift2
+;BEGIN ALIAS PROPERTY Gift
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Gift2 Auto
+ReferenceAlias Property Alias_Gift Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Player
@@ -12,14 +12,14 @@ ReferenceAlias Property Alias_Gift2 Auto
 ReferenceAlias Property Alias_Player Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Gift2
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Gift2 Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY Skalei
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Skalei Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Gift
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Gift Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Shahvee
@@ -27,15 +27,12 @@ ReferenceAlias Property Alias_Gift Auto
 ReferenceAlias Property Alias_Shahvee Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_4
-Function Fragment_4()
+;BEGIN FRAGMENT Fragment_3
+Function Fragment_3()
 ;BEGIN CODE
-; Delivering Sahvees Package to Skalei
-Game.GetPlayer().RemoveItem(Alias_Gift2.GetReference())
-CompleteAllObjectives()
-Alias_Skalei.GetActorReference().SetRelationShipRank(Game.GetPlayer(), 2)
-
-Game.GetPlayer().AddItem(GoldReward)
+; Delivering the Package after Helgen got destroyed
+Game.GetPlayer().RemoveItem(Alias_Gift.GetReference())
+SetObjectiveCompleted(5)
 
 Stop()
 ;END CODE
@@ -54,30 +51,27 @@ Alias_Shahvee.GetReference().RemoveItem(Alias_Gift2.GetReference(), akOtherConta
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
+;BEGIN FRAGMENT Fragment_4
+Function Fragment_4()
 ;BEGIN CODE
-SetObjectiveDisplayed(5)
-;END CODE
-EndFunction
-;END FRAGMENT
+; Delivering Sahvees Package to Skalei
+Game.GetPlayer().RemoveItem(Alias_Gift2.GetReference())
+CompleteAllObjectives()
+Alias_Skalei.GetActorReference().SetRelationShipRank(Game.GetPlayer(), 2)
 
-;BEGIN FRAGMENT Fragment_3
-Function Fragment_3()
-;BEGIN CODE
-; Delivering the Package after Helgen got destroyed
-Game.GetPlayer().RemoveItem(Alias_Gift.GetReference())
-SetObjectiveCompleted(5)
+Game.GetPlayer().AddItem(GoldReward)
 
 Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
 ;BEGIN CODE
-SetStage(5)
+Alias_Skalei.GetReference().RemoveItem(Alias_Gift.GetReference(), akOtherContainer = Game.GetPLayer())
+
+SetObjectiveDisplayed(5)
 ;END CODE
 EndFunction
 ;END FRAGMENT
