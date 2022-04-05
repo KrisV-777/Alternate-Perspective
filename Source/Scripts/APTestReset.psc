@@ -15,8 +15,7 @@ Event OnActivate(ObjectReference akActionRef)
 		If(c > 0)
 			spawned = spawn.PlaceAtMe(spawnBases[c - 1])
 		EndIf
-	Else
-		(spawned as Actor).Kill()
+	ElseIf (true)
 		spawned.Disable()
 		spawned.Delete()
 		spawned = none
