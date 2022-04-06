@@ -233,6 +233,6 @@ Outfit Property VampArmor  Auto
 
 MiscObject Property Gold001  Auto
 
-Message Property Help_Msg  Auto  
+Message Property Help_Msg  Auto
 
-Armor[] Property uniform  Auto  
+Armor[] Property uniform  Auto
