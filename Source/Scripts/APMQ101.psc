@@ -5,6 +5,7 @@ import Game
 MQ101QuestScript Property qstScr Auto
 APStartIntroBedScript Property introBedScr Auto
 Actor Property PlayerRef Auto
+Quest Property HousePurchase Auto
 Outfit Property FarmClothesOutfit02 Auto
 Armor Property ClothesFarmClothes02 Auto
 Armor property ClothesFarmBoots02 Auto
@@ -16,11 +17,8 @@ ImageSpaceModifier Property FadeUpFromBlack Auto
 Idle Property IdleDLC1BossExplosion1stP Auto
 Idle Property TG05_GetUp Auto
 SoundCategory Property Master Auto
-ObjectReference Property charGenLight Auto
 ObjectReference Property titleSequenceMarker Auto
 {Marker to move the Player to during Title Sequence to (to get rid of the Subtitles)}
-ObjectReference Property knockDownMarker Auto Hidden
-{Where to port the Player after Title Sequence - BUGGED; OLD}
 ObjectReference Property kdMarker2 Auto
 {Where to port the Player after Title Sequence}
 ObjectReference Property enterTrigger Auto
@@ -50,13 +48,14 @@ Function GameStart()
   ; Utility.Wait(1.5)
   ShowRaceMenu()
   Utility.Wait(0.3) ; Will pause the script until Player exits RaceMenu
-  charGenLight.Disable()
   qstScr.AddRaceSpells()
   Utility.Wait(0.1)
   SetInCharGen(false, false, false)
   ; PrecacheCharGenClear()
   EnablePlayerControls()
   enterTrigger.Enable()
+	; Misc Stuff
+	HousePurchase.SetStage(5)
   RequestSave()
 EndFunction
 
@@ -80,16 +79,15 @@ EndEvent
 Function knockoutPlayer()
   ; For recap: Were currently using a Weak Blur which has been applied by Alduins second shout (a custom Storm Call)
   ; This here will knock down the Player to give a fluent transition from Alduins appearance to Helgens Destruction
-  qstScr.CGDragonAttackBlurLong.PopTo(qstScr.PlayerAlduinIMOD) ; Swap Weak blurr with strong one
+  qstScr.CGDragonAttackBlurLong.PopTo(qstScr.PlayerAlduinIMOD) ; Swap soft blurr with strong one
   DisablePlayerControls(abCamSwitch = true, abLooking = true)
-  Utility.Wait(0.3) ; First part of the Imod
+  Utility.Wait(0.3) ; Imod
   ForceFirstPerson()
   PlayerRef.PlayIdle(IdleDLC1BossExplosion1stP)
-  ; qstScr.Alduin.GetReference().PushActorAway(PlayerRef, 15)
-  Utility.Wait(3) ; Second part of Imod
-  Master.Mute() ; Mute the game for that extra bit of atmosphere
+  Utility.Wait(3) ; Imod
+  Master.Mute()
   Utility.Wait(2) ; Imod completely blacks out the game
-  qstScr.PlayerAlduinIMOD.PopTo(FadeToBlackHoldImod) ; keep it blacked out
+  qstScr.PlayerAlduinIMOD.PopTo(FadeToBlackHoldImod)
   PlayerRef.MoveTo(titleSequenceMarker, abMatchRotation = false) ; Move player outside of Helgen to get rid of Subtitles
   ShowTitleSequenceMenu() ; Vanilla Title Sequence (Bethesda presents..)
   RegisterForSingleUpdate(4)
@@ -97,15 +95,13 @@ Function knockoutPlayer()
   ; Second part of the Intro starts now
   SetStage(145) ; destory Helgen
   Utility.Wait(35) ; Title Sequence Duration
-  PlayerRef.MoveTo(kdMarker2, abMatchRotation = false) ; back to Helgen
-  Utility.Wait(1)
+  PlayerRef.MoveTo(kdMarker2) ; back to Helgen
   Master.UnMute()
-  PlayerRef.ResetHealthAndLimbs() ; Heal in case Alduin hit the Player a few times
+  Utility.Wait(5)
+  PlayerRef.ResetHealthAndLimbs()
   FadeToBlackHoldImod.PopTo(FadeUpFromBlack) ; fade the Screen back in
-  Utility.Wait(4)
   PlayerRef.PlayIdle(TG05_GetUp)
   Utility.Wait(1.5)
-  ; Game.EnablePlayerControls(abFighting = false, abCamSwitch = true, abActivate = false) ; Moved to SF_MQ101DragonAttackScene1_000D0594
   ; Player should be free to move now & escape Helgen. Yay.
 EndFunction
 

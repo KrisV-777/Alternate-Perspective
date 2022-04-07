@@ -18,15 +18,15 @@ Event OnActivate(ObjectReference akActionRef)
 		If(SkipIntroMsg.Show() == 0) ; Imperials
 			mainScr.FactionPath = 1
 			PrepHelgen()
-			(MQ101 as QF_MQ101_0003372B).MQ102A.setStage(3)
-			ObjectReference Hadvar = (MQ101 as QF_MQ101_0003372B).Alias_Hadvar.GetReference()
+			(MQ101 as QF_MQ101_0003372B_new).MQ102A.setStage(3)
+			ObjectReference Hadvar = (MQ101 as QF_MQ101_0003372B_new).Alias_Hadvar.GetReference()
 			Hadvar.MoveTo(toPort)
 			Hadvar.Enable()
 		Else ; Stormcloaks
 			mainScr.FactionPath = 2
 			PrepHelgen()
-			(MQ101 as QF_MQ101_0003372B).MQ102B.setStage(3)
-			ObjectReference  Ralof = (MQ101 as QF_MQ101_0003372B).Alias_Ralof.GetReference()
+			(MQ101 as QF_MQ101_0003372B_new).MQ102B.setStage(3)
+			ObjectReference  Ralof = (MQ101 as QF_MQ101_0003372B_new).Alias_Ralof.GetReference()
 			Ralof.MoveTo(toPort)
 			Ralof.Enable()
 		EndIf
@@ -42,7 +42,7 @@ Function PrepHelgen()
 	MQ101.SetStage(720)
 
 	Debug.Trace("AP: Destroying Helgen...")
-	QF_MQ101_0003372B  qstScr = MQ101 as QF_MQ101_0003372B ; Get MQ101 Quest Script
+	QF_MQ101_0003372B_new  qstScr = MQ101 as QF_MQ101_0003372B_new ; Get MQ101 Quest Script
 	qstScr.HelgenDisEnabMarker.DisableNoWait() ; Disable all AP specific NPC
 
 	QF_MQ101DragonAttack_000D0593 drScr = (qstScr.MQ101DragonAttack as Quest) as  QF_MQ101DragonAttack_000D0593

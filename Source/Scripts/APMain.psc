@@ -3,25 +3,16 @@ Scriptname APMain extends Quest Conditional
 import StorageUtil
 import PapyrusUtil
 ; ---------------------------- Properties
-UIListMenu Property UIList Auto Hidden
-Quest Property DialogueWhiterunGuardGateStop  Auto
-Quest Property HousePurchase Auto
-Quest Property MQ101 Auto
-Message Property TempChooseSidesMessage2 Auto
 ReferenceAlias[] Property questAliases Auto
 ObjectReference[] Property startLocs Auto
 {Matlara, Torolf, Haming, Gunnar, Vilod, Ingrid}
 ObjectReference Property helgenInnMarker Auto
-ObjectReference Property dunHunterDoor Auto
-MiscObject Property Gold001 Auto
 ImageSpaceModifier Property FadeToBlackHoldImod Auto
 ImageSpaceModifier Property FadeToBlackBackImod Auto
-Scene Property introScene Auto
-Formlist Property StopAfterIntroList Auto
 Message Property MQ105SkipMsg Auto
 ; ---------------------------- Framework Variables
+UIListMenu UIList
 Quest[] Property startingQuests Auto
-Actor Property TheMessenger Auto
 int defaultAlgorithm = 0
 Quest entryQuest = none
 ; ---------------------------- Helgen Quest Variables
@@ -30,7 +21,7 @@ bool Property UIExtensionsThere Auto Hidden Conditional
 Function destroyHelgen() global
 	Debug.Trace("[Alternate Perspective] destroying Helgen..")
 	
-	QF_MQ101_0003372B q101scr = Game.GetFormFromFile(0x03372B, "Skyrim.esm") as QF_MQ101_0003372B
+	QF_MQ101_0003372B_new q101scr = Game.GetFormFromFile(0x03372B, "Skyrim.esm") as QF_MQ101_0003372B_new
 	; Stage10
 	; disable stuff around Helgen & temp end gate
 	q101scr.FortNeugradEnableMarker.Disable()
@@ -150,22 +141,6 @@ Event OnInit()
 	; SetFormValue(none, "APSMEscaped with Ralof", startingQuests[43])
 EndEvent
 
-; Cleanup
-Function StopQuest()
-	DialogueWhiterunGuardGateStop.SetStage(5)
-	dunHunterDoor.SetLockLevel(0)
-	dunHunterDoor.Lock(false)
-	int i = StopAfterIntroList.GetSize()
-	While(i > 0)
-		i -= 1
-		Quest tmp = StopAfterIntroList.GetAt(i) as Quest
-		If(tmp && tmp.IsRunning())
-			tmp.Stop()
-		EndIf
-	EndWhile
-	Stop()
-EndFunction
-
 ; =========================================================
 ; ============================== MENU BUILDING
 ; =========================================================
@@ -230,18 +205,18 @@ Function SetEntry()
 		string[] subListUI = StringUtil.Split(mainString[i], "_")
 		string prefix = subListUI[0]
 		If(subListUI.length == 2) ; No Childs
-			FormListAdd(TheMessenger, "APS_Quests", GetFormValue(none, prefix + subListUI[1]))
+			FormListAdd(none, "APS_Quests", GetFormValue(none, prefix + subListUI[1]))
 		ElseIf(subListUI.length > 2) ; Has Childs
-			FormListAdd(TheMessenger, "APS_Quests", none) ; Set the Parent Option to none
+			FormListAdd(none, "APS_Quests", none) ; Set the Parent Option to none
 			Self.SetPropertyIndexBool("hasChildren", pos, true)
 			int n = 1 ; Skip first Line, thats the Prefix
 			While(n < subListUI.length)
 				Self.AddEntryItem(subListUI[n], pos, i)
-				FormListAdd(TheMessenger, "APS_Quests", GetFormValue(none, prefix + subListUI[n]))
+				FormListAdd(none, "APS_Quests", GetFormValue(none, prefix + subListUI[n]))
 				n += 1
 			EndWhile
 		else ; Invalid Line, set to none and use the Default if the Player selects it
-			FormListAdd(TheMessenger, "APS_Quests", none)
+			FormListAdd(none, "APS_Quests", none)
 		EndIf
 		i += 1
 	EndWhile
@@ -264,9 +239,9 @@ Function MenuOpen()
 		string prefix = subList[0]
 		entryQuest = GetFormValue(none, prefix + subList[Utility.RandomInt(2, subList.length - 1)]) as Quest ; 0 is Prefix, 1 is "random" by definition
 	else ; Base stuff.. yay!
-		entryQuest = FormListGet(TheMessenger,  "APS_Quests", _resultInt) as Quest
+		entryQuest = FormListGet(none,  "APS_Quests", _resultInt) as Quest
 	EndIf
-	FormListClear(TheMessenger, "APS_Quests")
+	FormListClear(none, "APS_Quests")
 EndFunction
 
 int Function OpenMenu(Form aForm = None, Form aReceiver = None)
@@ -356,49 +331,43 @@ EndFunction
 ; ============================== ENTER GAME
 ; =========================================================
 Function enterGame()
-	; Get startcell
 	Actor Player = Game.GetPlayer()
 	Cell startcell = Player.GetParentCell()
-	; Start Mainquest
+	; Move NPC into Position
+	int i = 0
+	While(i < startLocs.length)
+		questAliases[i].GetReference().MoveTo(startLocs[i])
+		i += 1
+	EndWhile
+	; Start Intro Quest
 	Game.DisablePlayerControls()
 	FadeToBlackHoldImod.Apply()
-	; Start intro
 	If(entryQuest == startingQuests[42]) ; Dragonborn Skip to MQ105
 		int sq = 42 + MQ105SkipMsg.Show() ; 0 = Hadvar, 1 = Ralof
 		startingQuests[sq].Start()
 	ElseIf(entryQuest == none) ; default Quests
 		Game.GetPlayer().MoveTo(helgenInnMarker)
 	ElseIf(entryQuest.Start() == false)
+		Debug.MessageBox("Failed to start Intro Quest with ID = " + entryQuest.GetFormID() + "\nMoving you to Helgen Inn..")
 		Game.GetPlayer().MoveTo(helgenInnMarker)
 	EndIf
 	; Wait for the Player to leave the Starting Cell, then finish it up
-	int timeout = 0
-	While(Player.GetParentCell() == startcell && timeout < 100)
-		timeout += 1
+	int timeout = 25
+	While(Player.GetParentCell() == startcell && timeout > 0)
+		timeout -= 1
 		Utility.Wait(0.2)
 	EndWhile
-	If(timeout == 100)
-		Debug.MessageBox("You seem to be stuck. I'll move you into the Helgen Inn D:\nNormally a starting Option is expected to move you out of this cell. If this happens every time you use this Starting Option, you should get in touch with the Author that implemented it.")
+	If(timeout == 0)
+		Debug.MessageBox("You seem to be stuck. I'll move you into the Helgen Inn D:\nNormally a starting Option is expected to move you out of this cell. If this happens every time you use this Starting Option, you should get in touch with the Author that implemented it.\nQuest ID = " + entryQuest.GetFormID())
 		Game.GetPlayer().MoveTo(helgenInnMarker)
 	EndIf
 	Game.EnablePlayerControls()
 	FadeToBlackHoldImod.PopTo(FadeToBlackBackImod)
-	SetActors()
+	Free()
 	Game.RequestSave()
 EndFunction
 
-Function SetActors()
-	; Move Helgen NPC
-	If(IsRunning())
-		int i = 0
-		While(i < startLocs.length)
-			questAliases[i].GetReference().MoveTo(startLocs[i])
-			i += 1
-		EndWhile
-	EndIf
-	; Misc Stuff
-	HousePurchase.SetStage(5)
-	; Free StorageUtil Data
+Function Free()
 	string[] mainString = StringListToArray(none, "APS_mainListIntern")
 	int i = 0
 	While(i < mainString.length)
