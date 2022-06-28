@@ -14,6 +14,8 @@ Quest Property DialogueWhiterunGuardGateStop Auto ; Whiterun Guard will approach
 Formlist Property StopAfterIntroList Auto
 ObjectReference Property dunHunterDoor Auto
 
+ObjectReference Property HelgenGunnarDoor Auto
+
 Function Stage1000()
   Fragment.Alias_ImperialSoldierHelgen01.GetReference().Disable()
   Fragment.Alias_ImperialSoldierHelgen02.GetReference().Disable()
@@ -81,6 +83,14 @@ Function QuickStartKeep(bool imperials)
   ;make sure the right controls are enabled/disabled
   Game.DisablePlayerControls(abCamSwitch = True)
   Game.EnablePlayerControls(abFighting= false, abCamSwitch = false, abActivate = false)
+EndFunction
+
+Function Stage145()
+	Fragment.Alias_CivilianTorolf.GetActorRef().GetActorBase().SetEssential(false)
+	Fragment.Alias_CivilianSkalei.GetReference().DisableNoWait()
+	HelgenGunnarDoor.Reset()
+	float posZ = HelgenGunnarDoor.Z - 2000
+	HelgenGunnarDoor.SetPosition(HelgenGunnarDoor.X, HelgenGunnarDoor.Y, posZ)
 EndFunction
 
 

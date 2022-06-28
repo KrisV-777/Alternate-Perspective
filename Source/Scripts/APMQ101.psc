@@ -17,6 +17,7 @@ ImageSpaceModifier Property FadeUpFromBlack Auto
 Idle Property IdleDLC1BossExplosion1stP Auto
 Idle Property TG05_GetUp Auto
 SoundCategory Property Master Auto
+ObjectReference Property noSubtitleMarker Auto
 ObjectReference Property titleSequenceMarker Auto
 {Marker to move the Player to during Title Sequence to (to get rid of the Subtitles)}
 ObjectReference Property kdMarker2 Auto
@@ -83,15 +84,16 @@ Function knockoutPlayer()
   DisablePlayerControls(abCamSwitch = true, abLooking = true)
   Utility.Wait(0.3) ; Imod
   ForceFirstPerson()
+  SetHudCartMode()
   PlayerRef.PlayIdle(IdleDLC1BossExplosion1stP)
   Utility.Wait(3) ; Imod
   Master.Mute()
   Utility.Wait(2) ; Imod completely blacks out the game
   qstScr.PlayerAlduinIMOD.PopTo(FadeToBlackHoldImod)
-  PlayerRef.MoveTo(titleSequenceMarker, abMatchRotation = false) ; Move player outside of Helgen to get rid of Subtitles
+  PlayerRef.MoveTo(noSubtitleMarker, abMatchRotation = false) ; Move player outside of Helgen to get rid of Subtitles
+  PlayerRef.MoveTo(titleSequenceMarker, abMatchRotation = false) ; .. and back in Helgen, far below ground, to avoid load screen
   ShowTitleSequenceMenu() ; Vanilla Title Sequence (Bethesda presents..)
   RegisterForSingleUpdate(4)
-  SetHudCartMode()
   ; Second part of the Intro starts now
   SetStage(145) ; destory Helgen
   Utility.Wait(35) ; Title Sequence Duration
