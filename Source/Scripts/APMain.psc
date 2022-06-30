@@ -40,15 +40,20 @@ EndFunction
 ; =========================================================
 ; Startup
 Event OnInit()
+	; Move NPC into Position
+	int i = 0
+	While(i < startLocs.length)
+		questAliases[i].GetReference().MoveTo(startLocs[i])
+		i += 1
+	EndWhile
+
 	UIList = UIExtensions.GetMenu("UIListMenu") as UIListMenu
 	UIExtensionsThere = UIList != none
-
 	If(!UIExtensionsThere)
 		; No point preparing Menu Variables if you dont have UIExtensions
 		; I assume you also dont have PapyrusUtil in such instances so below would just spam the Log with Errors zzz
 		return
 	EndIf
-
 	string[] mainListUI = new string[13]
 	mainListUI[0] = " Default"
 	mainListUI[1] = "Random"
@@ -64,7 +69,6 @@ Event OnInit()
 	mainListUI[11] = " Member of a guild"
 	mainListUI[12] = " The Dragonborn"
 
-
 	string[] mainString = new string[13]
 	mainString[0] = "APS_Pilgerer" ; Quickstart_SkipAlduin_SkipIntro
 	mainString[1] = "APS_Random"
@@ -79,7 +83,6 @@ Event OnInit()
 	mainString[10] = "APSW_Falkreath"
 	mainString[11] = "APSG_Random_College of Winterhold_Thieves Guild_Dark Brotherhood_Companions"
 	mainstring[12] = "APSM_Meeting the Greybeards"
-
 
 	StringListCopy(none, "APS_mainListUI", mainListUI)
 	StringListCopy(none, "APS_mainListIntern", mainString)
@@ -333,12 +336,6 @@ EndFunction
 Function enterGame()
 	Actor Player = Game.GetPlayer()
 	Cell startcell = Player.GetParentCell()
-	; Move NPC into Position
-	int i = 0
-	While(i < startLocs.length)
-		questAliases[i].GetReference().MoveTo(startLocs[i])
-		i += 1
-	EndWhile
 	; Start Intro Quest
 	Game.DisablePlayerControls()
 	FadeToBlackHoldImod.Apply()

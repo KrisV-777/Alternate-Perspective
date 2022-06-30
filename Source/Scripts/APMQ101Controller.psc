@@ -16,6 +16,11 @@ ObjectReference Property dunHunterDoor Auto
 
 ObjectReference Property HelgenGunnarDoor Auto
 
+ObjectReference Property SkaleiPlazzaSeat  Auto  
+
+ObjectReference Property HelgenWatchtower Auto
+ObjectReference Property HelgenKeep Auto
+
 Function Stage1000()
   Fragment.Alias_ImperialSoldierHelgen01.GetReference().Disable()
   Fragment.Alias_ImperialSoldierHelgen02.GetReference().Disable()
@@ -88,9 +93,14 @@ EndFunction
 Function Stage145()
 	Fragment.Alias_CivilianTorolf.GetActorRef().GetActorBase().SetEssential(false)
 	Fragment.Alias_CivilianSkalei.GetReference().DisableNoWait()
-	HelgenGunnarDoor.Reset()
-	float posZ = HelgenGunnarDoor.Z - 2000
-	HelgenGunnarDoor.SetPosition(HelgenGunnarDoor.X, HelgenGunnarDoor.Y, posZ)
+	; HelgenGunnarDoor.Reset()
+	; float posZ = HelgenGunnarDoor.Z - 2000
+	; HelgenGunnarDoor.SetPosition(HelgenGunnarDoor.X, HelgenGunnarDoor.Y, posZ)
+  ; HelgenGunnarDoorStatic.Disable()
 EndFunction
 
-
+Function Stage5()
+  Fragment.Alias_CivilianSkalei.GetReference().MoveTo(SkaleiPlazzaSeat)
+  Fragment.Alias_Priest.GetReference().MoveTo(HelgenWatchtower)
+  Fragment.Alias_Headsman.GetReference().MoveTo(HelgenKeep)
+EndFunction
