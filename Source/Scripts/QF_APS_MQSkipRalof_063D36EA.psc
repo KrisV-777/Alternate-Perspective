@@ -13,7 +13,7 @@ Function Fragment_0()
 Actor Player = Game.GetPlayer()
 
 (MQ101 as MQ101QuestScript).FactionPath = 2
-APMain.DestroyHelgen()
+APMQ101Controller.DestroyHelgen()
 MQ101.SetStage(500)
 MQ101.SetStage(800)
 MQ101.SetStage(1000)

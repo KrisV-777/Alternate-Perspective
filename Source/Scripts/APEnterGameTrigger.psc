@@ -1,6 +1,6 @@
 Scriptname APEnterGameTrigger extends ObjectReference
 
-APMain Property Main  Auto
+APMessengerUtil Property Main  Auto
 
 Event OnTriggerEnter(ObjectReference akActionRef)
 	Actor PlayerRef = Game.GetPlayer()

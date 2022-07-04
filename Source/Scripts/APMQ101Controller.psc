@@ -1,7 +1,23 @@
 Scriptname APMQ101Controller extends Quest  
 {Script holds Stage Data cause MQ101 Quest Script is apparently bugged?}
 
-APMain Property Main Auto
+Function destroyHelgen() global
+	Debug.Trace("[Alternate Perspective] destroying Helgen..")
+	
+	QF_MQ101_0003372B_new q101scr = Game.GetFormFromFile(0x03372B, "Skyrim.esm") as QF_MQ101_0003372B_new
+	; Stage10
+	; disable stuff around Helgen & temp end gate
+	q101scr.FortNeugradEnableMarker.Disable()
+	q101scr.TempEndGate.Disable()
+	q101scr.HelgenDisEnabMarker.Disable()
+	q101scr.CollisionWall.Disable()
+	; Stage20
+	q101scr.CartPathAmbientMarker.disable()
+
+	q101scr.SetStage(145)
+	q101scr.SetStage(200)
+EndFunction
+
 QF_MQ101_0003372B_new Property Fragment
   QF_MQ101_0003372B_new Function Get()
     return (Self as Quest) as QF_MQ101_0003372B_new
@@ -9,17 +25,43 @@ QF_MQ101_0003372B_new Property Fragment
 EndProperty
 
 Actor Property PlayerRef Auto
-Quest Property HelgenDialogue Auto
-Quest Property DialogueWhiterunGuardGateStop Auto ; Whiterun Guard will approach the Player if trying to enter Whiterun
+APDialogueHelgen Property DialogueHelgenScr Auto
+Quest Property DialogueWhiterunGuardGateStop Auto ; Whiterun Guard will approach the PlayerRef if trying to enter Whiterun
 Formlist Property StopAfterIntroList Auto
 ObjectReference Property dunHunterDoor Auto
 
 ObjectReference Property HelgenGunnarDoor Auto
 
 ObjectReference Property SkaleiPlazzaSeat  Auto  
+ObjectReference Property GunnarIntroPos Auto
 
 ObjectReference Property HelgenWatchtower Auto
 ObjectReference Property HelgenKeep Auto
+
+GlobalVariable Property MQQuickStart Auto
+ObjectReference Property CharGenFXTrigger Auto
+
+ObjectReference Property TulliusStartMarker Auto
+ObjectReference Property TulliusHorseMarker Auto
+ObjectReference Property Cart1 Auto
+ObjectReference Property Cart1HorseMarker Auto
+ObjectReference Property Cart1SoldierMarker Auto
+ObjectReference Property Cart2UlfricMarker Auto
+ObjectReference Property Cart1Prisoner02Marker Auto
+ObjectReference Property Cart1Prisoner03Marker Auto
+ObjectReference Property Cart1Prisoner04Marker Auto
+ObjectReference Property Cart2 Auto
+ObjectReference Property Cart2HorseMarker Auto
+ObjectReference Property Cart2SoldierMarker Auto
+ObjectReference Property Cart2RalofMarker Auto
+ObjectReference Property Cart2Prisoner01Marker Auto
+ObjectReference Property Cart2PlayerMarker Auto
+ObjectReference Property Cart1Prisoner01Marker Auto
+ObjectReference Property HadvarMarker Auto
+ObjectReference Property HadvarHorseMarker Auto
+
+Cell Property StartCell Auto
+bool Property storegear Auto Hidden
 
 Function Stage1000()
   Fragment.Alias_ImperialSoldierHelgen01.GetReference().Disable()
@@ -45,9 +87,8 @@ Function Stage1000()
 		EndIf
 	EndWhile
   
-	HelgenDialogue.Stop()
+  DialogueHelgenScr.ShutDown()
 EndFunction
-
 
 Function QuickStartKeep(bool imperials)
   If(imperials)
@@ -88,19 +129,4 @@ Function QuickStartKeep(bool imperials)
   ;make sure the right controls are enabled/disabled
   Game.DisablePlayerControls(abCamSwitch = True)
   Game.EnablePlayerControls(abFighting= false, abCamSwitch = false, abActivate = false)
-EndFunction
-
-Function Stage145()
-	Fragment.Alias_CivilianTorolf.GetActorRef().GetActorBase().SetEssential(false)
-	Fragment.Alias_CivilianSkalei.GetReference().DisableNoWait()
-	; HelgenGunnarDoor.Reset()
-	; float posZ = HelgenGunnarDoor.Z - 2000
-	; HelgenGunnarDoor.SetPosition(HelgenGunnarDoor.X, HelgenGunnarDoor.Y, posZ)
-  ; HelgenGunnarDoorStatic.Disable()
-EndFunction
-
-Function Stage5()
-  Fragment.Alias_CivilianSkalei.GetReference().MoveTo(SkaleiPlazzaSeat)
-  Fragment.Alias_Priest.GetReference().MoveTo(HelgenWatchtower)
-  Fragment.Alias_Headsman.GetReference().MoveTo(HelgenKeep)
 EndFunction

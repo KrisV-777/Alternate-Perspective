@@ -71,7 +71,7 @@ EndFunction
 ; ============================= DESTROY HELGEN
 ; ==================================================
 Event OnAnimationEvent(ObjectReference akSource, string asEventName)
-  if (akSource == qstScr.Alduin.GetActorRef()) && (asEventName == "TowerLandImpact")
+  if (akSource == qstScr.Alduin.GetActorRef()) && (asEventName == "TowerLandImpact") && !GetStageDone(4)
 		Debug.SendAnimationEvent(PlayerRef, "StaggerStart")
 	EndIf
 EndEvent
@@ -101,7 +101,7 @@ Function knockoutPlayer()
   PlayerRef.ResetHealthAndLimbs()
   FadeToBlackHoldImod.PopTo(FadeUpFromBlack) ; fade the Screen back in
   PlayerRef.PlayIdle(TG05_GetUp)
-  Utility.Wait(1.5)
+  ; Utility.Wait(1.5)
   ; Player should be free to move now & escape Helgen. Yay.
 EndFunction
 

@@ -6,13 +6,13 @@ Scriptname TIF_AP_06401007 Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-int PlayerCropCount = Game.GetPlayer().GetItemCount(JuniperBerry)
-			
+Actor Player = Game.GetPlayer()
+int PlayerCropCount = Player.GetItemCount(JuniperBerry)
+
 ;Calculate the amount of gold to give the player
 int PlayerGoldReward = (PlayerCropCount * 4)
-	
-Game.GetPlayer().RemoveItem(JuniperBerry, PlayerCropCount)
-Game.GetPlayer().AddItem(Gold001, PlayerGoldReward)
+Player.RemoveItem(JuniperBerry, PlayerCropCount)
+Player.AddItem(Gold001, PlayerGoldReward)
 ;END CODE
 EndFunction
 ;END FRAGMENT
