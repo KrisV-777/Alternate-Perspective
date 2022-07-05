@@ -36,7 +36,7 @@ auto STATE waitingForActor
 		; check for correct actor
 		actor actorRef = triggerRef as actor
 		if actorRef == None || prereqStageOPT > -1 && MyQuest.getStageDone(prereqStageOPT) != 1
-			; trace(self+" didn't trigger for base actor " + actorRef.GetActorBase() + " <> " + TriggerActor)
+			return
 		endif
 		if MQQuickStart.Value == 7 && actorRef.GetActorBase() == TriggerActor01 \
 			|| MQQuickStart.Value < 7 && actorRef.GetActorBase() == TriggerActor02
@@ -48,6 +48,8 @@ auto STATE waitingForActor
 				Disable()
 			endif
 			; trace(self+" triggered by "+actorRef)
+		else
+			; trace(self+" didn't trigger for base actor " + actorRef.GetActorBase() + " <> " + TriggerActor)
 		endif
 	endEVENT
 endSTATE

@@ -25,9 +25,19 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_2
 Function Fragment_2()
 ;BEGIN CODE
-; Vilod died
+; Vilod died or Helgen got destroyed
 FailAllObjectives()
 Stop()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
+BerryGlobal.Value = Game.GetPlayer().GetItemCount(JuniperBerries)
+UpdateCurrentInstanceGlobal(BerryGlobal)
+SetObjectiveDisplayed(10)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -47,16 +57,6 @@ EndIf
 
 CompleteAllObjectives()
 Stop()
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
-;BEGIN CODE
-BerryGlobal.Value = Game.GetPlayer().GetItemCount(JuniperBerries)
-UpdateCurrentInstanceGlobal(BerryGlobal)
-SetObjectiveDisplayed(10)
 ;END CODE
 EndFunction
 ;END FRAGMENT

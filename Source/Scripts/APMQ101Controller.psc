@@ -61,19 +61,9 @@ ObjectReference Property HadvarMarker Auto
 ObjectReference Property HadvarHorseMarker Auto
 
 Cell Property StartCell Auto
-bool Property storegear Auto Hidden
+bool Property isintrotransition Auto Hidden
 
 Function Stage1000()
-  Fragment.Alias_ImperialSoldierHelgen01.GetReference().Disable()
-  Fragment.Alias_ImperialSoldierHelgen02.GetReference().Disable()
-
-  Fragment.Alias_CivilianGunnar.GetReference().Disable()
-  Fragment.Alias_CivilianIngrid.GetReference().Disable()
-  Fragment.Alias_CivilianMatlara.GetReference().Disable()
-  Fragment.Alias_CivilianTorolf.GetReference().Disable()
-  Fragment.Alias_CivilianTorri.GetReference().Disable()
-  Fragment.Alias_CivilianVilod.GetReference().Disable()
-
   DialogueWhiterunGuardGateStop.SetStage(5)
 	dunHunterDoor.SetLockLevel(0)
 	dunHunterDoor.Lock(false)
@@ -86,8 +76,6 @@ Function Stage1000()
 			tmp.Stop()
 		EndIf
 	EndWhile
-  
-  DialogueHelgenScr.ShutDown()
 EndFunction
 
 Function QuickStartKeep(bool imperials)
