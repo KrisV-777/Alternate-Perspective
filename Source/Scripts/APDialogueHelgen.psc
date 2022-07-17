@@ -10,6 +10,10 @@ ObjectReference Property IngridStart Auto
 Quest Property SkaleiRequest  Auto  
 Quest Property VilodFavor  Auto  
 
+Event OnInit()
+	SetPositions()
+EndEvent
+
 Function SetPositions()
     ; Cant assign Helgens Vanilla NPC to a new Editor Loc cause mod conflicts are a thing, zzz
     (GetAliasByName("RestingPilgrimOwner") as ReferenceAlias).GetReference().MoveTo(MatlaraStart)

@@ -1,4 +1,4 @@
-Scriptname APMessengerUtil extends Quest  Conditional
+Scriptname APMessengerUtil extends Quest  
 
 import StorageUtil
 import PapyrusUtil
@@ -44,13 +44,11 @@ EndFunction
 ; =========================================================
 ; ============================== MENU
 ; =========================================================
-bool Property UIExtensionsThere Auto Hidden Conditional
-
 Event OnInit()
-	UIExtensionsThere = UIExtensions.GetMenu("UIListMenu") as UIListMenu != none
 	If(!UIExtensions.GetMenu("UIListMenu"))
 		; No point preparing Menu Variables if you dont have UIExtensions
 		; I assume you also dont have PapyrusUtil in such instances so below would just spam the Log with Errors zzz
+		Debug.MessageBox("UI Extensions is required")
 		return
 	EndIf
 	string[] mainListUI = new string[13]
@@ -81,7 +79,7 @@ Event OnInit()
 	mainString[9] = "APSFor_Forsworn"
 	mainString[10] = "APSW_Falkreath"
 	mainString[11] = "APSG_Random_College of Winterhold_Thieves Guild_Dark Brotherhood_Companions"
-	mainstring[12] = "APSM_Meeting the Greybeards"
+	mainstring[12] = "APSM_Vanilla Start_High Hrothgar"
 
 	StringListCopy(none, "APS_mainListUI", mainListUI)
 	StringListCopy(none, "APS_mainListIntern", mainString)
@@ -130,7 +128,7 @@ Event OnInit()
 	SetFormValue(none, "APSVMovarth's Lair", startingQuests[35])
 	SetFormValue(none, "APSVHaemar's Shame", startingQuests[36])
 
-	SetFormValue(none, "APSForForsworn", startingQuests[44]) ; Forsworn
+	SetFormValue(none, "APSForForsworn", startingQuests[43]) ; Forsworn
 
 	SetFormValue(none, "APSWFalkreath", startingQuests[37]) ; Werewolf
 
@@ -139,7 +137,8 @@ Event OnInit()
 	SetFormValue(none, "APSGDark Brotherhood", startingQuests[40])
 	SetFormValue(none, "APSGCompanions", startingQuests[41])
 
-	SetFormValue(none, "APSMMeeting the Greybeards", startingQuests[42]) ; Mainquest Skip
+	SetFormValue(none, "APSMVanilla Start", startingQuests[44]) ; Mainquest
+	SetFormValue(none, "APSMHigh Hrothgar", startingQuests[42])
 EndEvent
 
 string[] _entryName
@@ -347,9 +346,7 @@ Function enterGame()
 	EndIf
 	Player.SetDontMove(false)
 	FadeToBlackHoldImod.PopTo(FadeToBlackBackImod)
-	
-	((Self as Quest) as APDialogueHelgen).SetPositions()
-
+	; ((Self as Quest) as APDialogueHelgen).SetPositions()
 	Free()
 	Game.RequestSave()
 EndFunction
