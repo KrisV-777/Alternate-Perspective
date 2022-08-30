@@ -10,7 +10,6 @@ Outfit Property FarmClothesOutfit02 Auto
 Armor Property ClothesFarmClothes02 Auto
 Armor property ClothesFarmBoots02 Auto
 MiscObject Property Gold001 Auto
-ObjectReference Property startMarker Auto
 ; ImageSpaceModifier Property FadeToBlackBackImod Auto
 ImageSpaceModifier Property FadeToBlackHoldImod Auto
 ImageSpaceModifier Property FadeUpFromBlack Auto
@@ -40,7 +39,7 @@ Function GameStart()
   PlayerRef.AddItem(ClothesFarmClothes02, 1, true)
   PlayerRef.EquipItem(ClothesFarmClothes02, abSilent = true)
   PlayerRef.AddItem(Gold001, 72, true)
-  PlayerRef.MoveTo(startMarker)
+  PlayerRef.MoveTo(APStartLoc.GetStartLoc())
   While(!PlayerRef.Is3DLoaded())
     Utility.Wait(0.05)
   EndWhile
@@ -57,6 +56,7 @@ Function GameStart()
 	; Misc Stuff
 	HousePurchase.SetStage(5)
   RequestSave()
+  Debug.SendAnimationEvent(PlayerRef, "IdleForceDefaultState")
 EndFunction
 
 ; ==================================================
