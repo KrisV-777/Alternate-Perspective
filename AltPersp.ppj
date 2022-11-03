@@ -14,7 +14,7 @@
         <Variable Name="nsfw" Value=".\optional\NSFW"/>
         <Variable Name="Rel" Value=".\.releases"/>
         <Variable Name="MO2" Value=".."/>
-        <Variable Name="Ver" Value="3.0"/>
+        <Variable Name="Ver" Value="3.0.1"/>
     </Variables>
     <Imports>
         <Import>@ThisProject\Source\Scripts</Import>
