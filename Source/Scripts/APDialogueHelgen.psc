@@ -17,24 +17,14 @@ ObjectReference Property IngridStart Auto
 Quest Property SkaleiRequest  Auto  
 Quest Property VilodFavor  Auto  
 
-Event OnInit()
-	If(!IsRunning())
-		return
-	Endif
-	; I dont know why, I dont know how, but this quest can start without filling its required alises
-	; COMEBACK: might have to manually fill them in
-	RegisterForSIngleUpdate(1)
-EndEvent
-Event OnUpdate()
-	; Delay by 1 sec cause Aliases arent filled by the time OnInit fires
-	; Cant assign Helgens Vanilla NPC to a new Editor Loc cause mod conflicts are a thing, zzz
+Function SetPositions()
 	RestingPilgrimOwner.GetReference().MoveTo(MatlaraStart)
 	RestingPilgrimBackup.GetReference().MoveTo(TorolfStart)
 	Haming.GetReference().MoveTo(TorriStart)
 	Blacksmith.GetReference().MoveTo(GunnarStart)
 	Vilod.GetReference().MoveTo(VilodStart)
 	Ingrid.GetReference().MoveTo(IngridStart)
-EndEvent
+EndFunction
 
 Function ShutDown()
 	(GetAliasByName("Messenger") as ReferenceAlias).GetReference().Disable()

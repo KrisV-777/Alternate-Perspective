@@ -174,6 +174,7 @@ Function Unlock()
 EndFunction
 
 Function SetEntry()
+	Debug.Trace("[AP] Preparing Selection Menu")
 	_entryName = Utility.CreateStringArray(512)
 	_entryId = Utility.CreateIntArray(_entryName.Length)
 	_entryParent = Utility.CreateIntArray(_entryName.Length)
@@ -239,6 +240,7 @@ Function MenuOpen()
 EndFunction
 
 int Function OpenMenu(Form aForm = None, Form aReceiver = None)
+	Debug.Trace("[AP] Opening Selection Menu")
 	_resultFloat = -1.0
 	_resultInt = -1
 	_resultString = ""

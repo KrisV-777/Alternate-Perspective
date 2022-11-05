@@ -2,17 +2,6 @@
 ;NEXT FRAGMENT INDEX 7
 Scriptname SF_APMQ101PreIntroScene_042000FA Extends Scene Hidden
 
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
-;BEGIN CODE
-Matlara.MoveTo(MatlaraStartMarker)
-Torri.MoveTo(TorriStartMarker)
-Torolf.MoveTo(TorolfStartMarker)
-GetOwningQuest().SetStage(5)
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_4
 Function Fragment_4()
 ;BEGIN CODE
@@ -21,10 +10,13 @@ Matlara.EvaluatePackage()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
 ;BEGIN CODE
-Game.EnablePlayerControls()
+Matlara.MoveTo(MatlaraStartMarker)
+Torri.MoveTo(TorriStartMarker)
+Torolf.MoveTo(TorolfStartMarker)
+GetOwningQuest().SetStage(5)
 ;END CODE
 EndFunction
 ;END FRAGMENT

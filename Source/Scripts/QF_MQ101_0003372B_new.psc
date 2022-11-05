@@ -3573,7 +3573,9 @@ Alias_KeepDoorInteriorStormcloaks.GetRef().BlockActivation(true)
 Weather.ReleaseOverride()
 
 ; AP - remove the essential flag from the captain
-Alias_ImperialSoldierFort01.GetActorReference().GetActorBase().SetEssential(0)
+Actor FortSoldier = Alias_ImperialSoldierFort01.GetReference() as Actor
+FortSoldier.GetActorBase().SetEssential(false)
+FortSoldier.SetCrimeFaction(none)
 ;END CODE
 EndFunction
 ;END FRAGMENT

@@ -26,7 +26,7 @@ Event OnSleepStart(float afSleepStartTime, float afDesiredSleepEndTime)
     MQ101.SetStage(3)
     Utility.Wait(0.2)
     PlayerRef.PlayIdle(WakeUp)
-    ; Utility.Wait(3)
-    ; Game.EnablePlayerControls() ; Moved to SF_APMQ101PreIntroScene_042000FA
+    Utility.Wait(11.3)
+    Game.EnablePlayerControls()
   EndIf
 EndEvent

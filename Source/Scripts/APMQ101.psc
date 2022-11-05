@@ -6,6 +6,7 @@ MQ101QuestScript Property qstScr Auto
 APStartIntroBedScript Property introBedScr Auto
 Actor Property PlayerRef Auto
 Quest Property HousePurchase Auto
+Quest Property DialogueHelgen Auto
 Outfit Property FarmClothesOutfit02 Auto
 Armor Property ClothesFarmClothes02 Auto
 Armor property ClothesFarmBoots02 Auto
@@ -54,9 +55,15 @@ Function GameStart()
   EnablePlayerControls()
   enterTrigger.Enable()
 	; Misc Stuff
-	HousePurchase.SetStage(5)
   RequestSave()
   Debug.SendAnimationEvent(PlayerRef, "IdleForceDefaultState")
+  If(!DialogueHelgen.Start())
+    Debug.MessageBox("Failed to start Dialogue Quest")
+    Debug.Trace("[AP] Failed to start Dialogue Quest")
+  Else
+    (DialogueHelgen as APDialogueHelgen).SetPositions()
+  EndIf
+	HousePurchase.SetStage(5)
 EndFunction
 
 ; ==================================================
