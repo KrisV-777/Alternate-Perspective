@@ -25,9 +25,11 @@ ObjectReference Property enterTrigger Auto
 {Triggerbox to get the player out of start cell. Have to enable it after the Character Creation, otherwise it would activate when the player spawns in the cell}
 ObjectReference Property APMarker Auto
 {Enable This Marker to Disable AP Pre-Destoryed Objects}
+
 ; ==================================================
 ; ============================= GAME START
 ; ==================================================
+
 Function GameStart()
   ; Debug.Trace("AP: Gamestart")
   ; FadeToBlackHoldImod.Apply()
@@ -42,7 +44,7 @@ Function GameStart()
   PlayerRef.AddItem(Gold001, 72, true)
   PlayerRef.MoveTo(APStartLoc.GetStartLoc())
   While(!PlayerRef.Is3DLoaded())
-    Utility.Wait(0.05)
+    Utility.WaitMenuMode(0.05)
   EndWhile
   ; FadeToBlackBackImod.Apply()
   ; Utility.Wait(1.5)
@@ -69,6 +71,7 @@ EndFunction
 ; ==================================================
 ; ============================= PREPARE INTRO
 ; ==================================================
+
 Function prepareIntro()
   SetStage(1)
   introBedScr.StartIntro = true
@@ -77,6 +80,7 @@ EndFunction
 ; ==================================================
 ; ============================= DESTROY HELGEN
 ; ==================================================
+
 Event OnAnimationEvent(ObjectReference akSource, string asEventName)
   if (akSource == qstScr.Alduin.GetActorRef()) && (asEventName == "TowerLandImpact") && !GetStageDone(4)
 		Debug.SendAnimationEvent(PlayerRef, "StaggerStart")
@@ -128,7 +132,7 @@ I have to admit the Vanilla Intro is remarkably complicated. I keep track of eve
 08) Stage 20 - The track from Stage15 ends here, open the Gate to Helgen and evaluate Package for Hadvar & Carriages to follow a new Track that leads to the Execution Plaza. The Following Stages are all triggered on this way and dont seem to have any additional interaction somewhere (yaaay its getting simple)
 09) Stage 20 - Once going past the door, SetStage22
 10) Stage 22 - Enabling Crowd Sounds, Tullius makes Elenwen move forward
-11) Stage 25 - North Gate closed; Scene with Torri (Haming) & Torolf starts here ("I wanna watch the Soldiers - go inside cup" the short Scene with the child)
+11) Stage 25 - North Gate closed; Scene with Torri (Haming) & Torolf starts here ("I wanna watch the Soldiers - go inside cub" the short Scene with the child)
 12) Stage 26 - East Gate Closed
 13) Stage 30 - Disable the Civilians outside of Helgen and reassure that the Horses are executing the correct AI Package
 14) Stage ?? - Once the Scene between Haming & Torolf stops, they are disabled (Before the Scene ends they go inside the House behind them which will be APs Inn)
