@@ -2,104 +2,9 @@
 ;NEXT FRAGMENT INDEX 3
 Scriptname QF_APS_VampireHaermarsShame_063AAEDC Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY Actor02
+;BEGIN ALIAS PROPERTY tpMark
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor02 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor02001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02001 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor01
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor02000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor03001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor03001 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor03
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor03 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor09
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor09 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor00
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor00 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor14
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor14 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor00000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor00000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor15
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor15 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Player
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Player Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor01000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor11
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor11 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor12
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor12 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor02
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor06
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor06 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor10
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor10 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor05
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor05 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor03
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor03 Auto
+ReferenceAlias Property Alias_tpMark Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY myLoc
@@ -107,94 +12,9 @@ ReferenceAlias Property Alias_Actor03 Auto
 LocationAlias Property Alias_myLoc Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Actor04
+;BEGIN ALIAS PROPERTY Player
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor04 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor00000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor00000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor04001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04001 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor04000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor07
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor07 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor13
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor13 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor08
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor08 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor00
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor00 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor04000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Actor01
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Actor01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor00001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor00001 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor01000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor02000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor02000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor04
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor04 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor03000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor03000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor03000000
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor03000000 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY MiscActor01001
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MiscActor01001 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY tpMark
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_tpMark Auto
+ReferenceAlias Property Alias_Player Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN FRAGMENT Fragment_0
@@ -236,6 +56,8 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_1
 Function Fragment_1()
 ;BEGIN CODE
+Game.GetPlayer().RemoveFromFaction(prisonerFac)
+
 string hlpEvent = "APStmp"
 APS_VampireBloodletThrone_Msg.ShowAsHelpMessage(hlpEvent, 3, 0, 1)
 Utility.Wait(2.0)
@@ -267,3 +89,5 @@ Message Property APS_VampireBloodletThrone_Msg  Auto
 ObjectReference[] Property GargoyleTrigger  Auto  
 
 Armor[] Property uniform  Auto  
+
+Faction Property prisonerFac  Auto  

@@ -2702,10 +2702,12 @@ Alias_Justiciar02.GetReference().EnableNoWait()
 ElenwenHorse.EnableNoWait()
 
 ; WJS - for Emulation, we need to wait until all actors are loaded before we can put them in the carts through animation
-While !(myPlayer.Is3DLoaded()) || !(myImperialSoldier01.Is3DLoaded()) || !(myRalof.Is3DLoaded()) || !(myPrisoner01.Is3DLoaded()) || !(myUlfric.Is3DLoaded()) || !(myImperialSoldier02.Is3DLoaded()) || !(myStormcloakPrisoner02.Is3DLoaded()) || !(myStormcloakPrisoner03.Is3DLoaded()) || !(myStormcloakPrisoner04.Is3DLoaded())
+While !(myCart2.Is3DLoaded()) || !(myCart1.Is3DLoaded()) || !(myPlayer.Is3DLoaded()) || !(myImperialSoldier01.Is3DLoaded()) || !(myRalof.Is3DLoaded()) || !(myPrisoner01.Is3DLoaded()) || !(myUlfric.Is3DLoaded()) || !(myImperialSoldier02.Is3DLoaded()) || !(myStormcloakPrisoner02.Is3DLoaded()) || !(myStormcloakPrisoner03.Is3DLoaded()) || !(myStormcloakPrisoner04.Is3DLoaded())
                 Utility.Wait(0.2)
 EndWhile
 
+myCart1.SetMotionType(myCart1.Motion_Keyframed)
+myCart2.SetMotionType(myCart2.Motion_Keyframed)
 
 ; tether carts & horses
 myCart1.TetherToHorse(Alias_CartHorse1.GetActorRef())
@@ -2744,6 +2746,10 @@ myStormcloakPrisoner02.PlayIdle(IdleCartPrisonerBSway)
 myStormcloakPrisoner03.PlayIdle(IdleCartPrisonerDSway)
 myStormcloakPrisoner04.PlayIdle(IdleCartPrisonerASway)
 myStormcloakPrisoner01.PlayIdle(IdleCartPrisonerCSway)
+
+Utility.Wait(0.5)
+myCart1.SetMotionType(myCart1.Motion_Dynamic)
+myCart2.SetMotionType(myCart2.Motion_Dynamic)
 
 myUlfric.EquipItem(ArmorGag)
 
