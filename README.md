@@ -1,24 +1,8 @@
 # [AlternatePerspective](https://www.nexusmods.com/skyrimspecialedition/mods/50307/)
-Rework of Skyrims Vanilla Intro in an attempt to allow a fast &amp; immersive entry into the game without harming the Main Quests integrity whatsoever
 
-When starting a new Game, you will spawn into a small Inn Room resembling Part of Helgens Inn. In it a small Dragon awaits you allowing you to choose between a quanity of different Options to define your Intro Sequence.
-No matter the Intro you choose, until you start the Mainquest Helgen will be a regular Town with a Shop and townsfolk going on their day.*
+An overhaul to Skyrims Intro Sequence, allowing the player to view the execution scene from a 3rd person-perspective and giving new options to starting the game.
 
-*Note that until the Intro is started, the Civil War Quest will be disabled as this Quest Line builds on the expectation that Helgen is destroyed.
-*An Overview of Intro Sequences is listed in a Sticky on the Forum of the Nexus Page.
-
-## Helgen
-All buildings inside Helgen have been reconstructed, new NPC are wandering around Helgen and existing NPC have their backstory expanded. The intention is to make Helgen live up to be a proper little Town with its own little (and not so little) Problems, very similar to other smaller Towns that can be found throughout Skyrim - such as Riverwood or Rorikstead
-
-Helgen is intended to be a town with its own Identity and Place within Skyrim. The Vanilla Intro fails to address Helgen as a place where people live with the short time you spend in Helgen, it makes the impression like nothing was lost when the place is burned down to cinders. Alternate Perspective wants to change that, wants to express that Helgen being burned down actually means something. Skyrim just lost a Town and many people died, this should make a lasting impression, if only for the one shop less to fast travel to.
-
-## Installation
-This mod should have Priority over all conflicts. If you don't know how to do conflict resolution on your own, I recommend loading it at the bottom of your load order
-
-**Requirements**
+### Requirements
 - [Fuz Ro D-oh](https://www.nexusmods.com/skyrimspecialedition/mods/15109)
 - [Papyrus Util](https://www.nexusmods.com/skyrimspecialedition/mods/13048)
 - [UIExtensions](https://www.nexusmods.com/skyrimspecialedition/mods/17561)
-
-## For Mod Authors
-Its possible to hook into Alternate Perspective to create your own Starting Scenarios. Read the Article on the Nexus Page for more Information
