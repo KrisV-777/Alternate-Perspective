@@ -1594,17 +1594,24 @@ Alias_GeneralTullius.GetActorRef().EvaluatePackage()
 Alias_Hadvar.GetRef().MoveTo(Alias_HadvarStartMarker.GetRef())
 Alias_Ralof.GetRef().MoveTo(Alias_RalofStartMarker.GetRef())
 Alias_ImperialSoldier01.GetRef().Moveto(Alias_SoldierMarker1.GetRef())
-Alias_ImperialSoldier02.GetRef().Moveto(Alias_SoldierMarker1.GetRef())
+Alias_ImperialSoldier02.GetRef().Moveto(Alias_SoldierMarker2.GetRef())
 Alias_Ulfric.GetRef().MoveTo(Alias_StormcloakPrisoner1StartMarker.GetRef())
 Alias_StormcloakPrisoner01.GetRef().Moveto(Alias_UlfricStartMarker.GetRef())
-Alias_StormcloakPrisoner02.GetRef().Moveto(Alias_StormcloakPrisoner1StartMarker.GetRef())
-Alias_StormcloakPrisoner03.GetRef().Moveto(Alias_StormcloakPrisoner1StartMarker.GetRef())
-Alias_StormcloakPrisoner04.GetRef().Moveto(Alias_StormcloakPrisoner1StartMarker.GetRef())
+Alias_StormcloakPrisoner02.GetRef().Moveto(Alias_StormcloakPrisoner2StartMarker.GetRef())
+Alias_StormcloakPrisoner03.GetRef().Moveto(Alias_StormcloakPrisoner3StartMarker.GetRef())
+Alias_StormcloakPrisoner04.GetRef().Moveto(Alias_StormcloakPrisoner4StartMarker.GetRef())
 Alias_Prisoner01.GetRef().Moveto(Alias_PrisonerMarker1.GetRef())
 Alias_Prisoner02.GetRef().MoveTo(Alias_PlayerStartMarker.GetRef())
 
 ; enable horses & carts
-Alias_CartHorse1.GetRef().Enable()
+ObjectReference h1 = Alias_CartHorse1.GetReference()
+; ObjectReference h2 = Alias_CartHorse2.GetReference()
+h1.Enable()
+; h1.Reset()
+; h2.Reset()
+; Utility.Wait(0.1)
+; h1.MoveToMyEditorLocation()
+; h2.MoveToMyEditorLocation()
 Alias_Cart1.GetReference().Enable()
 Alias_Cart2.GetReference().Enable()
 
@@ -2557,6 +2564,8 @@ Alias_TulliusHorse.GetReference().MoveTo(kmyQuest.TulliusHorseMarker)
 Alias_HadvarHorse.GetRef().MoveTo(kmyQuest.HadvarHorseMarker)
 Alias_CartHorse1.GetRef().MoveTo(kmyQuest.Cart1HorseMarker)
 Alias_CartHorse2.GetRef().MoveTo(kmyQuest.Cart2HorseMarker)
+; Alias_CartHorse1.GetRef().Reset(kmyQuest.Cart1HorseMarker)
+; Alias_CartHorse2.GetRef().Reset(kmyQuest.Cart2HorseMarker)
 
 ; everybody else into position
 Alias_Elenwen.GetRef().MoveTo(Alias_ElenwenStartMarker.GetRef())
@@ -2706,9 +2715,6 @@ While !(myCart2.Is3DLoaded()) || !(myCart1.Is3DLoaded()) || !(myPlayer.Is3DLoade
                 Utility.Wait(0.2)
 EndWhile
 
-myCart1.SetMotionType(myCart1.Motion_Keyframed)
-myCart2.SetMotionType(myCart2.Motion_Keyframed)
-
 ; tether carts & horses
 myCart1.TetherToHorse(Alias_CartHorse1.GetActorRef())
 myCart2.TetherToHorse(Alias_CartHorse2.GetActorRef())
@@ -2746,10 +2752,6 @@ myStormcloakPrisoner02.PlayIdle(IdleCartPrisonerBSway)
 myStormcloakPrisoner03.PlayIdle(IdleCartPrisonerDSway)
 myStormcloakPrisoner04.PlayIdle(IdleCartPrisonerASway)
 myStormcloakPrisoner01.PlayIdle(IdleCartPrisonerCSway)
-
-Utility.Wait(0.5)
-myCart1.SetMotionType(myCart1.Motion_Dynamic)
-myCart2.SetMotionType(myCart2.Motion_Dynamic)
 
 myUlfric.EquipItem(ArmorGag)
 
@@ -3741,12 +3743,12 @@ Alias_GeneralTullius.GetRef().MoveTo(Alias_TulliusStartMarker.GetRef())
 Alias_Hadvar.GetRef().MoveTo(Alias_HadvarStartMarker.GetRef())
 Alias_Ralof.GetRef().MoveTo(Alias_RalofStartMarker.GetRef())
 Alias_ImperialSoldier01.GetRef().Moveto(Alias_SoldierMarker1.GetRef())
-Alias_ImperialSoldier02.GetRef().Moveto(Alias_SoldierMarker1.GetRef())
+Alias_ImperialSoldier02.GetRef().Moveto(Alias_SoldierMarker2.GetRef())
 Alias_Ulfric.GetRef().MoveTo(Alias_StormcloakPrisoner1StartMarker.GetRef())
 Alias_StormcloakPrisoner01.GetRef().Moveto(Alias_UlfricStartMarker.GetRef())
-Alias_StormcloakPrisoner02.GetRef().Moveto(Alias_StormcloakPrisoner1StartMarker.GetRef())
-Alias_StormcloakPrisoner03.GetRef().Moveto(Alias_StormcloakPrisoner1StartMarker.GetRef())
-Alias_StormcloakPrisoner04.GetRef().Moveto(Alias_StormcloakPrisoner1StartMarker.GetRef())
+Alias_StormcloakPrisoner02.GetRef().Moveto(Alias_StormcloakPrisoner2StartMarker.GetRef())
+Alias_StormcloakPrisoner03.GetRef().Moveto(Alias_StormcloakPrisoner3StartMarker.GetRef())
+Alias_StormcloakPrisoner04.GetRef().Moveto(Alias_StormcloakPrisoner4StartMarker.GetRef())
 Alias_Prisoner01.GetRef().Moveto(Alias_PrisonerMarker1.GetRef())
 
 ; enable horses & carts
