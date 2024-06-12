@@ -1,10 +1,15 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 1
+;NEXT FRAGMENT INDEX 2
 Scriptname QF_APS_InnSolitude_063457D2 Extends Quest Hidden
 
 ;BEGIN ALIAS PROPERTY WinkingSkeever
 ;ALIAS PROPERTY TYPE LocationAlias
 LocationAlias Property Alias_WinkingSkeever Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Player
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Player Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY CenterCell
@@ -19,6 +24,13 @@ Actor PlayerRef = Game.GetPlayer()
 PlayerRef.MoveTo(Alias_CenterCell.GetReference())
 ; PlayerRef.AddItem(Gold001, Utility.RandomInt(50, 150), abSilent = true)
 ; PlayerRef.AddItem(myWeap, abSilent = true)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
 Stop()
 ;END CODE
 EndFunction

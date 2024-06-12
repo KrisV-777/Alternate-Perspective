@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 36
+;NEXT FRAGMENT INDEX 38
 Scriptname SF_MQ101Scene4_000CD68E Extends Scene Hidden
 
 ;BEGIN FRAGMENT Fragment_35
@@ -18,18 +18,26 @@ GetOwningQuest().SetStage(80)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_19
-Function Fragment_19()
+;BEGIN FRAGMENT Fragment_12
+Function Fragment_12()
 ;BEGIN CODE
-getowningquest().setstage(90)
+GetOwningQuest().SetStage(75)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_20
-Function Fragment_20()
+;BEGIN FRAGMENT Fragment_36
+Function Fragment_36()
 ;BEGIN CODE
-GetOwningQuest().setstage(95)
+Actor lokir = Prisoner01.GetReference() as Actor
+int i = 0
+While (!lokir.IsDead())
+  Utility.Wait(0.5)
+  i += 1
+  If (i > 10)
+    lokir.Kill()
+  EndIf
+EndWhile
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -51,18 +59,26 @@ GetOwningQuest().SetStage(84)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_12
-Function Fragment_12()
-;BEGIN CODE
-GetOwningQuest().SetStage(75)
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_26
 Function Fragment_26()
 ;BEGIN CODE
 GetOwningQuest().SetStage(100)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_34
+Function Fragment_34()
+;BEGIN CODE
+GetOwningQuest().SetStage(65)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_20
+Function Fragment_20()
+;BEGIN CODE
+GetOwningQuest().setstage(95)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -76,10 +92,10 @@ GetOwningQuest().SetStage(82)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_34
-Function Fragment_34()
+;BEGIN FRAGMENT Fragment_19
+Function Fragment_19()
 ;BEGIN CODE
-GetOwningQuest().SetStage(65)
+getowningquest().setstage(90)
 ;END CODE
 EndFunction
 ;END FRAGMENT

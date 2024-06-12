@@ -10,16 +10,6 @@ Game.EnablePlayerControls(abFighting = false, abCamSwitch = true, abActivate = f
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_22
-Function Fragment_22()
-;BEGIN CODE
-If GetOwningQuest().GetStageDone(40) == 0
-  GetOwningQuest().SetStage(30)
-EndIf
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_6
 Function Fragment_6()
 ;BEGIN CODE
@@ -32,6 +22,16 @@ EndFunction
 Function Fragment_16()
 ;BEGIN CODE
 GetOwningQuest().SetStage(105)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_22
+Function Fragment_22()
+;BEGIN CODE
+If GetOwningQuest().GetStageDone(40) == 0
+  GetOwningQuest().SetStage(30)
+EndIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
