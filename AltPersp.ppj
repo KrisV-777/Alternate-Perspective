@@ -14,7 +14,7 @@
         <Variable Name="nsfw" Value=".\optional\NSFW"/>
         <Variable Name="Rel" Value=".\.releases"/>
         <Variable Name="MO2" Value=".."/>
-        <Variable Name="Ver" Value="3.0.6"/>
+        <Variable Name="Ver" Value="3.1.0"/>
     </Variables>
     <Imports>
         <Import>@ThisProject\Source\Scripts</Import>
@@ -53,32 +53,8 @@
             <Include>LICENSE</Include>
         </ZipFile>
         <!-- Patches -->
-        <ZipFile Name="@ModName 2.6 - Anniversary Edition" RootDir="@patches" Compression="deflate">
-        	<Include>Anniversary</Include>
-        </ZipFile>
         <ZipFile Name="@ModName 2.6 - AE Bone Wolf" RootDir="@patches" Compression="deflate">
         	<Include>AE Bone Wolf</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.3.1 - CC Content" RootDir="@patches" Compression="deflate">
-        	<Include>CC Content</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.3.1 - NF" RootDir="@patches" Compression="deflate">
-        	<Include>Northborne Falkreath</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.3.1 - NF - RS" RootDir="@patches" Compression="deflate">
-        	<Include>Northborne Falkreath - RSChildren</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.3.1 - RS" RootDir="@patches" Compression="deflate">
-        	<Include>RSChildren</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.3.1 - TKAA" RootDir="@patches" Compression="deflate">
-        	<Include>TKAA</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.3.1 - TUDM" RootDir="@patches" Compression="deflate">
-        	<Include>TUDM</Include>
-        </ZipFile>
-        <ZipFile Name="@ModName 2.6 - Simple Children" RootDir="@patches" Compression="deflate">
-        	<Include>Simple Children</Include>
         </ZipFile>
         <!-- Add Ons SFW -->
         <ZipFile Name="No Startroom Markers" RootDir="@sfw" Compression="deflate">
