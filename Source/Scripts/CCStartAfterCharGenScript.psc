@@ -1,3 +1,5 @@
+scriptName CCStartAfterCharGenScript extends Quest
+
 ;/ Decompiled by Champollion V1.0.1
 Source   : CCStartAfterCharGenScript.psc
 Modified : 2021-04-19 21:20:51
@@ -5,7 +7,6 @@ Compiled : 2021-11-18 09:50:44
 User     : builds
 Computer : RKVBGSBUILD11
 /;
-scriptName CCStartAfterCharGenScript extends Quest
 
 ;-- Properties --------------------------------------
 Int property MyQuestStageToSet auto
@@ -19,12 +20,7 @@ Float property SecondsBetweenChecks = 30.0000 auto
 
 ;-- Functions ---------------------------------------
 
-; Skipped compiler generated GetState
-
-; Skipped compiler generated GotoState
-
 function CheckStageToStart()
-
 	;if MQ101.GetStageDone(CharGenStageToWatch) == true && game.GetPlayer().GetLevel() >= optionalRequiredPlayerLevel
 	if game.GetPlayer().GetLevel() >= optionalRequiredPlayerLevel
 		self.SetStage(MyQuestStageToSet)
@@ -34,11 +30,9 @@ function CheckStageToStart()
 endFunction
 
 function OnUpdate()
-
 	self.CheckStageToStart()
 endFunction
 
 function OnInit()
-
 	self.CheckStageToStart()
 endFunction
