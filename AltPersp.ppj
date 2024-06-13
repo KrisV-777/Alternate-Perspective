@@ -56,15 +56,14 @@
         <ZipFile Name="@ModName 2.6 - AE Bone Wolf" RootDir="@patches" Compression="deflate">
         	<Include>AE Bone Wolf</Include>
         </ZipFile>
-        <!-- Add Ons SFW -->
-        <ZipFile Name="No Startroom Markers" RootDir="@sfw" Compression="deflate">
+        <ZipFile Name="No Startroom Markers" RootDir="@patches" Compression="deflate">
         	<Include>No Startroom Markers</Include>
         </ZipFile>
-        <ZipFile Name="Classic Start - @Ver" RootDir="@sfw" Compression="deflate">
+        <ZipFile Name="Classic Start - @Ver" RootDir="@patches" Compression="deflate">
         	<Include>Classic Start</Include>
         </ZipFile>
-        <!-- Add Ons NSFW -->
-        <ZipFile Name="Sold Out 2.0" RootDir="@nsfw" Compression="deflate">
+        <!-- Sold Out -->
+        <ZipFile Name="Sold Out 2.0" RootDir="@patches" Compression="deflate">
         	<Include>Sold Out</Include>
         </ZipFile>
     </ZipFiles>
