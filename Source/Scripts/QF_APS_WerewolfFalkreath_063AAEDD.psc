@@ -22,35 +22,36 @@ Function Fragment_0()
 ;BEGIN CODE
 Actor Player = Game.GetPlayer()
 
-; turn player into werewolf 
-; make you immune to disease, remove existing diseases
+; turn player into werewolf
 if (Player.HasKeyword(VampireKeyword))
     (PlayerVampireQuest as PlayerVampireQuestScript).VampireCure(Player)
 endif
 WerewolfCureDisease.Cast(Player)
 
-; give you the spells
 Player.AddSpell(Immunity, false)
 Player.AddSpell(BeastForm, false)
 
-; if nightmare night is installed, check for the Global 
-; to let the Player choose if they wanna be Werebear or Werewolf!
-Debug.Trace("Alternate Perspective: Checking for Nightmare Night")
+; Nightmare Night compatibility
+; Debug.Trace("Alternate Perspective: Checking for Nightmare Night")
 GlobalVariable NightmareNight = Game.GetFormFromFile(0x90C, "NightmareNight.esp") as GlobalVariable
-Debug.Trace("Alternate Perspective: Nightmare Night = " + NightmareNight)
+; Debug.Trace("Alternate Perspective: Nightmare Night = " + NightmareNight)
 If(NightmareNight)
-    Debug.Trace("Alternate Perspective Werewolf: Nightmare Night found")
+    ; Debug.Trace("Alternate Perspective Werewolf: Nightmare Night found")
     int choice = WolfOrBearMsg.Show()
     NightmareNight.SetValue(Math.abs(choice - 1))
 EndIf
 
-; and turn them into a doggo
+; transform into doggo
 BeastForm.Cast(Player)
 Utility.Wait(3)
 GameTime.SetValue(21)
 
-; then move you into position \o/
+; Some markers chosen by this quest may be midair, causing the player to die from fall damage
+; when spawning in, thus enable god mode until shortly after load screen
+Debug.SetGodMode(true)
 Player.MoveTo(Alias_portMarker.GetReference())
+Utility.Wait(1.5)
+Debug.SetGodMode(false)
 Stop()
 ;END CODE
 EndFunction
