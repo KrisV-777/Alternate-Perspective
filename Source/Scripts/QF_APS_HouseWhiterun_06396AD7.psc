@@ -2,6 +2,11 @@
 ;NEXT FRAGMENT INDEX 2
 Scriptname QF_APS_HouseWhiterun_06396AD7 Extends Quest Hidden
 
+;BEGIN ALIAS PROPERTY playerHouse
+;ALIAS PROPERTY TYPE LocationAlias
+LocationAlias Property Alias_playerHouse Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY homeCenter
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_homeCenter Auto
@@ -12,11 +17,6 @@ ReferenceAlias Property Alias_homeCenter Auto
 ReferenceAlias Property Alias_HouseCarl Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY playerHouse
-;ALIAS PROPERTY TYPE LocationAlias
-LocationAlias Property Alias_playerHouse Auto
-;END ALIAS PROPERTY
-
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
@@ -24,7 +24,7 @@ Alias_Housecarl.GetActorRef().AddToFaction(PotentialMarriageFaction)
 
 HousePurchaseScript purScript = purchaseHouse as HousePurchaseScript
 purScript.Purchasehouse(house, housekey, guide, purScript.HPWhiterun)
-purScript.whiterunhousevar=1
+purScript.WhiterunHouseVar = 1
 
 If FavorQ.GetStageDone(10)
   FavorQ.SetStage(15)
