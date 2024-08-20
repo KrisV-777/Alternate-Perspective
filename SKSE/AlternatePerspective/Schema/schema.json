@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "mod": {
+        "description": "The plugin name of your mod (including extension).",
+        "type": "string",
+        "pattern": "((.esm)|(.esp)|(.esl))$"
+      },
+      "text": {
+        "description": "A headline to describe your quest/category.",
+        "type": "string"
+      },
+      "description": {
+        "description": "A short description of your event (1 or 2 sentences). This is the text displayed at the top of the menu.",
+        "type": "string"
+      },
+      "color": {
+        "description": "An optional color to your option card/s in the menu in order to group and highlight them. Red is reserved.",
+        "type": "string",
+        "pattern": "^0x[0-9A-Fa-f]{6}$"
+      },
+      "id": {
+        "description": "The formid of the quest containing your event. Will be ignored if suboptions is defined.",
+        "type": [
+          "string",
+          "integer"
+        ]
+      },
+      "suboptions": {
+        "description": "An array of subquests for your event, allowing you to group events with a similar theme together.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "description": "A short headline of describing your option.",
+              "type": "string"
+            },
+            "id": {
+              "description": "The formid of the quest containing your event.",
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "color": {
+              "description": "An alternative color to highlight this option on select.",
+              "type": "string",
+              "pattern": "^0x[0-9A-Fa-f]{6}$"
+            },
+            "mod": {
+              "description": "The plugin which contains your event. Will use the one stated on the main card if missing.",
+              "type": "string",
+              "pattern": "((.esm)|(.esp)|(.esl))$"
+            }
+          },
+          "required": [
+            "text",
+            "id"
+          ]
+        },
+        "minItems": 1
+      }
+    },
+    "required": [
+      "mod",
+      "text"
+    ],
+    "oneOf": [
+      {
+        "required": [
+          "id"
+        ]
+      },
+      {
+        "required": [
+          "suboptions"
+        ]
+      }
+    ]
+  }
+}
