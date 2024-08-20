@@ -1,0 +1,10 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "SKSE/AlternatePerspective/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Scrabx3/AlternatePerspective/main/SKSE/AlternatePerspective/Schema/schema.json"
+    }
+  ]
+}
