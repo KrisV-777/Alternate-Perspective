@@ -2,3 +2,4 @@
 *.code-workspace
 .build-papyrus.yml
 .releases
+*.swf
