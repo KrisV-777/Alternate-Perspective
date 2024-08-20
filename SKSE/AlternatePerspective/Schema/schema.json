@@ -40,7 +40,7 @@
               "type": "string"
             },
             "id": {
-              "description": "The formid of the quest containing your event.",
+              "description": "The formid of the quest containing your event. A \"random\" option can be added by setting this field to 0.",
               "type": [
                 "string",
                 "integer"
