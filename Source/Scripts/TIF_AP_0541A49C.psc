@@ -1,14 +1,12 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 1
-Scriptname TIF_AP_0541A49E Extends TopicInfo Hidden
+Scriptname TIF_AP_0541A49C Extends TopicInfo Hidden
 
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-; APMessengerUtil scr = GetOwningQuest() as APMessengerUtil
-; scr.SetEntry()
-; scr.MenuOpen()
+SendModEvent("AP_MessengerMenuOpen")
 ;END CODE
 EndFunction
 ;END FRAGMENT
