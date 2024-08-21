@@ -3,6 +3,10 @@ Scriptname APDialoguePlayer extends ReferenceAlias
 String Property MENUPATH = "AlternatePerspectiveMenu" AutoReadOnly Hidden
 Quest Property StartingQuest Auto Hidden
 
+String Function GetEventPath() global
+	return "Data/SKSE/AlternatePerspective/"
+EndFunction
+
 Event OnInit()
   OnPlayerLoadGame()
 EndEvent
@@ -19,7 +23,7 @@ Event MenuOpen(string asEventName, string asStringArg, float afNumArg, form akSe
 		Debug.MessageBox("[Alternate Perspective]\nMissing JContainers. Only default start options will be available.")
 		UI.Invoke("CustomMenu", "_root.main.openMenu")
 	Else
-		String[] files = JContainers.contentsOfDirectoryAtPath("Data/SKSE/AlternatePerspective", "json")
+		String[] files = JContainers.contentsOfDirectoryAtPath(GetEventPath(), ".json")
 		UI.InvokeStringA("CustomMenu", "_root.main.openMenu", files)
 	EndIf
 EndEvent
