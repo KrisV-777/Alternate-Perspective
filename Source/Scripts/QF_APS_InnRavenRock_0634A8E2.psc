@@ -19,6 +19,9 @@ Actor PlayerRef = Game.GetPlayer()
 PlayerRef.MoveTo(Alias_CenterCell.GetReference())
 ; PlayerRef.AddItem(Gold001, Utility.RandomInt(50, 150), abSilent = true)
 ; PlayerRef.AddItem(myWeap, abSilent = true)
+DLC2RRGjalundInit.SetValue(1)
+DLC2RRASForce.SetValue(1)
+DLC2Init.SetStage(100)
 Stop()
 ;END CODE
 EndFunction
@@ -31,3 +34,9 @@ ObjectReference Property InnMarker  Auto
 MiscObject Property Gold001  Auto
 
 LeveledItem Property myWeap  Auto
+
+GlobalVariable Property DLC2RRGjalundInit  Auto  
+
+GlobalVariable Property DLC2RRASForce  Auto  
+
+Quest Property DLC2Init  Auto  

@@ -1,4 +1,4 @@
-; BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
+;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 1
 Scriptname QF_APS_DocksRavenRock_0634F9F0 Extends Quest Hidden
 
@@ -6,6 +6,8 @@ Scriptname QF_APS_DocksRavenRock_0634F9F0 Extends Quest Hidden
 Function Fragment_0()
 ;BEGIN CODE
 Actor PlayerRef = Game.GetPlayer()
+PlayerRef.MoveTo(dockMarker)
+
 ; PlayerRef.RemoveItem(ClothesFarmClothes02, abSilent = true)
 ; PlayerRef.AddItem(ClothesFarmClothesVariant04, abSilent = true)
 ; PlayerRef.EquipItemEx(ClothesFarmClothesVariant04, equipSound = false)
@@ -13,7 +15,9 @@ Actor PlayerRef = Game.GetPlayer()
 ; PlayerRef.AddItem(Gold001, Utility.RandomInt(57, 200), abSilent = true)
 ; PlayerRef.AddItem(myWeap, abSilent = true)
 
-PlayerRef.MoveTo(dockMarker)
+DLC2RRGjalundInit.SetValue(1)
+DLC2RRASForce.SetValue(1)
+DLC2Init.SetStage(100)
 Stop()
 ;END CODE
 EndFunction
@@ -30,3 +34,9 @@ ObjectReference Property dockMarker  Auto
 Armor Property ClothesFarmClothesVariant04  Auto
 
 Armor Property ClothesFarmClothes02  Auto
+
+GlobalVariable Property DLC2RRGjalundInit  Auto  
+
+GlobalVariable Property DLC2RRASForce  Auto  
+
+Quest Property DLC2Init  Auto  
