@@ -12,15 +12,13 @@
         <Variable Name="patches" Value=".\patches"/>
         <Variable Name="Rel" Value=".\.releases"/>
         <Variable Name="MO2" Value=".."/>
-        <Variable Name="Ver" Value="3.1.1"/>
+        <Variable Name="Ver" Value="4.0.0"/>
     </Variables>
     <Imports>
         <Import>@ThisProject\Source\Scripts</Import>
         <Import>@MO2\Creation Kit\Source\Scripts</Import>
         <!-- Ressources -->
         <Import>@MO2\JContainers SE\Source\Scripts</Import>
-        <Import>@MO2\PapyrusUtil SE - Modders Scripting Utility Functions\Source\Scripts</Import>
-        <Import>@MO2\UIExtensions\Source\Scripts</Import>
         <!-- Base Game -->
         <Import>C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\Source\Scripts</Import>
     </Imports>
@@ -31,13 +29,14 @@
         <!-- Main Files -->
         <ZipFile Name="@ModName @Ver" RootDir="@ThisProject" Compression="deflate">
         	<Include>AlternatePerspective.esp</Include>
+            <Include>Interface</Include>
             <Include>meshes</Include>
             <Include>Scripts</Include>
+            <Include>SKSE</Include>
             <Include>Seq</Include>
             <Include>Sound</Include>
             <Include>Source</Include>
             <Include>textures</Include>
-            <Include>LICENSE</Include>
         </ZipFile>
         <ZipFile Name="@ModName @Ver LE" RootDir="@ThisProject" Compression="deflate">
         	<Include>AlternatePerspective.esp</Include>
@@ -60,10 +59,6 @@
         </ZipFile>
         <ZipFile Name="Classic Start - @Ver" RootDir="@patches" Compression="deflate">
         	<Include>Classic Start</Include>
-        </ZipFile>
-        <!-- Sold Out -->
-        <ZipFile Name="Sold Out 2.0" RootDir="@patches" Compression="deflate">
-        	<Include>Sold Out</Include>
         </ZipFile>
     </ZipFiles>
 </PapyrusProject>

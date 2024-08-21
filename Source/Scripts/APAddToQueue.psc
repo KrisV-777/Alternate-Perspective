@@ -2,7 +2,6 @@ ScriptName APAddToQueue Extends Quest
 {This script is redundant with the 4.0 Update. Please use the .json schema instead.
 See the github Wiki (linked on the Alternate Perspective Nexus Forum Page) for more information}
 
-import StorageUtil
 ; ---------------------------- Properties
 string Property mainHeadline Auto
 {What the Player sees when they first talk to The Messanger
