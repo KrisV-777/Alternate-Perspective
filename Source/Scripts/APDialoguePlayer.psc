@@ -32,16 +32,19 @@ Event MenuOpen(string asEventName, string asStringArg, float afNumArg, form akSe
 EndEvent
 
 Event MenuSelect(string asEventName, string asStringArg, float afNumArg, form akSender)
+	String msgErr = "[Alternate Perspective]\nInvalid Intro Quest:\n\n"
 	If (afNumArg == -1)
 		startingQuest = none
 		Debug.Trace("[Alternate Perspective] Default (None) Quest selected")
 		return
 	ElseIf (Game.GetModByName(asStringArg) == 255)
+		Debug.MessageBox(msgErr + "The mod " + asStringArg + " is not loaded into your game.")
 		Debug.Trace("[Alternate Perspective] Quest selected from unloaded mod: " + asStringArg + "/" + afNumArg as int)
 		return
 	EndIf
 	startingQuest = Game.GetFormFromFile(afNumArg as int, asStringArg) as Quest
 	If (!startingQuest)
+		Debug.MessageBox(msgErr + "The FormID " + (afNumArg as int) + "does not reference a quest in " + asStringArg + ".")
 		Debug.Trace("[Alternate Perspective] Unable to find selected Quest: " + asStringArg + "/" + afNumArg as int)
 	Else
 		Debug.Trace("[Alternate Perspective] Quest selected: " + asStringArg + "/" + afNumArg as int + " / Name (May be empty):" + startingQuest.GetName())
