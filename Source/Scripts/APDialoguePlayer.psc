@@ -44,7 +44,7 @@ Event MenuSelect(string asEventName, string asStringArg, float afNumArg, form ak
 	EndIf
 	startingQuest = Game.GetFormFromFile(afNumArg as int, asStringArg) as Quest
 	If (!startingQuest)
-		Debug.MessageBox(msgErr + "The FormID " + (afNumArg as int) + "does not reference a quest in " + asStringArg + ".")
+		Debug.MessageBox(msgErr + "The FormID " + (afNumArg as int) + " does not reference a quest in " + asStringArg + ".")
 		Debug.Trace("[Alternate Perspective] Unable to find selected Quest: " + asStringArg + "/" + afNumArg as int)
 	Else
 		Debug.Trace("[Alternate Perspective] Quest selected: " + asStringArg + "/" + afNumArg as int + " / Name (May be empty):" + startingQuest.GetName())
