@@ -19,7 +19,10 @@ EndEvent
 
 Event MenuOpen(string asEventName, string asStringArg, float afNumArg, form akSender)
   UI.OpenCustomMenu(MENUPATH)
-	If (SKSE.GetPluginVersion("JContainers64") == -1)
+	bool j0 = SKSE.GetPluginVersion("JContainers64") == -1
+	bool j1 = SKSE.GetPluginVersion("JContainersGOG") == -1
+	bool j2 = SKSE.GetPluginVersion("JContainersVR") == -1
+	If (j0 && j1 && j2)
 		Debug.MessageBox("[Alternate Perspective]\nMissing JContainers. Only default start options will be available.")
 		UI.Invoke("CustomMenu", "_root.main.openMenu")
 	Else
