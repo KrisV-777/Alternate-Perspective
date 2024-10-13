@@ -12,7 +12,7 @@
         <Variable Name="patches" Value=".\patches"/>
         <Variable Name="Rel" Value=".\.releases"/>
         <Variable Name="MO2" Value=".."/>
-        <Variable Name="Ver" Value="4.0.0"/>
+        <Variable Name="Ver" Value="4.0.1"/>
     </Variables>
     <Imports>
         <Import>@ThisProject\Source\Scripts</Import>
