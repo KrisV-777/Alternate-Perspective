@@ -22,6 +22,9 @@ PlayerRef.MoveTo(Alias_CenterCell.GetReference())
 DLC2RRGjalundInit.SetValue(1)
 DLC2RRASForce.SetValue(1)
 DLC2Init.SetStage(100)
+; TODO: Add these
+RRShipRide.FirstTimeToSolstheim = false
+DLC2RRArrivalScene.SetStage(200)
 Stop()
 ;END CODE
 EndFunction
@@ -40,3 +43,7 @@ GlobalVariable Property DLC2RRGjalundInit  Auto
 GlobalVariable Property DLC2RRASForce  Auto  
 
 Quest Property DLC2Init  Auto  
+
+DLC2DialogueRRQuestScript Property RRShipRide Auto
+
+Quest Property DLC2RRArrivalScene Auto
