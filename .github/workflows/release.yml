@@ -141,7 +141,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: pwsh
         run: |
-          gh release download -O .github/Caprica.7z -p '*.7z' -R Orvid/Caprica v0.3.0
+          gh release download -O .github/Caprica.7z -p '*.7z' -R KrisV-777/Caprica 0.3.0a
           7z x .github/Caprica.7z "-o.github\Caprica"
 
       - name: Checkout TESVScripts Sources
