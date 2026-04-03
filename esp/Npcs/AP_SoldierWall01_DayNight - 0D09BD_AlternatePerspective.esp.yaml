@@ -4,9 +4,6 @@ MajorRecordFlagsRaw: 262144
 EditorID: AP_SoldierWall01_DayNight
 SkyrimMajorRecordFlags:
 - Compressed
-ObjectBounds:
-  First: -41, -25, 0
-  Second: 41, 72, 86
 Configuration:
   Flags:
   - Respawn

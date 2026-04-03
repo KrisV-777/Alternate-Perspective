@@ -8,6 +8,34 @@ Playable: True
 Effects:
 - MutagenObjectType: PerkEntryPointModifyValue
   Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: LessThan
+      Data:
+        MutagenObjectType: GetHealthPercentageConditionData
+      ComparisonValue: 0.7
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.6
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModRecoveredHealth
+  PerkConditionTabCount: 1
+  Value: 0
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: LessThan
+      Data:
+        MutagenObjectType: GetHealthPercentageConditionData
+      ComparisonValue: 0.7
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.6
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
   - RunOnTabIndex: 1
     Conditions:
     - MutagenObjectType: ConditionFloat
@@ -26,31 +54,3 @@ Effects:
   PerkConditionTabCount: 2
   Modification: Multiply
   Value: 0.5
-- MutagenObjectType: PerkEntryPointModifyValue
-  Conditions:
-  - Conditions:
-    - MutagenObjectType: ConditionFloat
-      CompareOperator: LessThan
-      Data:
-        MutagenObjectType: GetHealthPercentageConditionData
-      ComparisonValue: 0.7
-  EntryPoint: ModAttackDamage
-  PerkConditionTabCount: 3
-  Modification: Multiply
-  Value: 0.6
-- MutagenObjectType: PerkEntryPointModifyValue
-  Conditions:
-  - Conditions:
-    - MutagenObjectType: ConditionFloat
-      CompareOperator: LessThan
-      Data:
-        MutagenObjectType: GetHealthPercentageConditionData
-      ComparisonValue: 0.7
-  EntryPoint: ModSpellMagnitude
-  PerkConditionTabCount: 3
-  Modification: Multiply
-  Value: 0.6
-- MutagenObjectType: PerkEntryPointModifyValue
-  EntryPoint: ModRecoveredHealth
-  PerkConditionTabCount: 1
-  Value: 0

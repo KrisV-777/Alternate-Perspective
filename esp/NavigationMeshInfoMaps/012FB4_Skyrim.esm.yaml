@@ -1094,85 +1094,118 @@ MapInfos:
     MutagenObjectType: NavigationMapInfoWorldParent
     ParentWorldspace: 00003C:Skyrim.esm
     ParentWorldspaceCoord: -21, 4
-- NavigationMesh: 3E7AF9:AlternatePerspective.esp
-  Point: 297.45352, 536.22974, 0.11151307
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 0752F3:AlternatePerspective.esp
+- NavigationMesh: 3364D0:AlternatePerspective.esp
+  Point: 2176.9282, 2126.59, 112.35876
   Unknown2: -1511415748
   Parent:
     MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 075286:AlternatePerspective.esp
-- NavigationMesh: 42E8FF:AlternatePerspective.esp
+    ParentCell: 2C1D00:AlternatePerspective.esp
+- NavigationMesh: 42E8FE:AlternatePerspective.esp
   Unknown: 32
-  Point: 18328.838, -80635.67, 8515.43
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 1CEAEE:AlternatePerspective.esp
-  Island:
-    Min: 17974.246, -80856.6, 8515.43
-    Max: 18918.328, -80133.484, 8515.43
-    Triangles:
-    - 0, 5, 1
-    - 6, 7, 5
-    - 5, 7, 1
-    - 0, 1, 2
-    - 4, 7, 6
-    - 0, 3, 5
-    Vertices:
-    - 18113.97, -80136.375, 8515.43
-    - 18918.328, -80830.57, 8515.43
-    - 18910.775, -80657.02, 8515.43
-    - 17974.246, -80136.375, 8515.43
-    - 18151.734, -80850.82, 8515.43
-    - 17985.574, -80466.12, 8515.43
-    - 17996.904, -80856.6, 8515.43
-    - 18223.484, -80839.25, 8515.43
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoWorldParent
-    ParentWorldspace: 00003C:Skyrim.esm
-    ParentWorldspaceCoord: -20, 4
-- NavigationMesh: 433A02:AlternatePerspective.esp
-  Point: 5.0085115, 112.0415, 195.46248
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 1C47BF:AlternatePerspective.esp
-  - Unknown: -460622861
-    Door: 1B53BC:AlternatePerspective.esp
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 1B53BB:AlternatePerspective.esp
-- NavigationMesh: 42E8FB:AlternatePerspective.esp
-  Unknown: 32
-  Point: 16704.617, -80747.46, 8222.482
+  Point: 16426.715, -81220.8, 8307.925
   MergedTo:
   - 368EDD:AlternatePerspective.esp
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 21961C:AlternatePerspective.esp
   Island:
-    Min: 16384, -80893.89, 8201.554
-    Max: 17016.074, -80591.99, 8260.964
+    Min: 16384, -81318.23, 8255.494
+    Max: 16477.781, -81130.445, 8346.884
     Triangles:
-    - 6, 1, 7
-    - 0, 3, 2
-    - 0, 4, 3
-    - 4, 5, 3
-    - 0, 2, 6
-    - 7, 0, 6
+    - 0, 1, 2
+    - 3, 1, 0
     Vertices:
-    - 16692.453, -80876.984, 8211.297
-    - 16384, -80893.89, 8201.554
-    - 16743.018, -80630.63, 8217.238
-    - 16841.621, -80637.88, 8230.309
-    - 16975.621, -80751.4, 8248.131
-    - 17016.074, -80665.66, 8260.727
-    - 16384, -80591.99, 8203.93
-    - 16485.133, -80889.06, 8206.782
+    - 16460.9, -81318.23, 8346.884
+    - 16384, -81130.445, 8255.494
+    - 16384, -81298.695, 8292.781
+    - 16477.781, -81136.45, 8336.282
   Unknown2: -1511415748
   Parent:
     MutagenObjectType: NavigationMapInfoWorldParent
     ParentWorldspace: 00003C:Skyrim.esm
     ParentWorldspaceCoord: -20, 4
+- NavigationMesh: 42E900:AlternatePerspective.esp
+  Unknown: 32
+  Point: 16540.09, -80317.18, -154758.94
+  Island:
+    Min: 16384, -80482.53, -154774.38
+    Max: 16679.34, -80188.77, -154746.69
+    Triangles:
+    - 0, 1, 4
+    - 4, 2, 3
+    - 4, 0, 1
+    - 3, 0, 4
+    Vertices:
+    - 16679.34, -80482.53, -154765.84
+    - 16675.795, -80236.95, -154748.8
+    - 16384, -80415.555, -154766.3
+    - 16582.469, -80470.78, -154774.38
+    - 16384, -80188.77, -154757.2
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoWorldParent
+    ParentWorldspace: 00003C:Skyrim.esm
+    ParentWorldspaceCoord: -20, 4
+- NavigationMesh: 0E56BF:AlternatePerspective.esp
+  Unknown: 32
+  Point: 4026.9395, 10475.598, 747.1647
+  Island:
+    Min: 3956.3672, 10407.497, 747.16174
+    Max: 4094.1265, 10545.801, 747.1708
+    Triangles:
+    - 0, 1, 2
+    - 3, 2, 1
+    Vertices:
+    - 3956.3672, 10407.497, 747.16974
+    - 4093.5754, 10410.263, 747.16174
+    - 3962.9797, 10538.056, 747.16174
+    - 4094.1265, 10545.801, 747.16174
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0D5AC1:AlternatePerspective.esp
+- NavigationMesh: 04781E:AlternatePerspective.esp
+  Point: 2153.0823, -528.70593, 2.357525E-05
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 03D4F2:AlternatePerspective.esp
+  - Unknown: -460622861
+    Door: 00591E:AlternatePerspective.esp
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 005900:AlternatePerspective.esp
+- NavigationMesh: 1CEBE9:AlternatePerspective.esp
+  Point: -29.455082, -23.84269, 100.76739
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 1CEAF3:AlternatePerspective.esp
+  - Unknown: -460622861
+    Door: 1CEAF4:AlternatePerspective.esp
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 1CEAEF:AlternatePerspective.esp
+- NavigationMesh: 0E56BE:AlternatePerspective.esp
+  Point: 5297.3037, 12508.662, 1280.2609
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0E56C3:AlternatePerspective.esp
+  - Unknown: -460622861
+    Door: 0E56C4:AlternatePerspective.esp
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0D5AC1:AlternatePerspective.esp
+- NavigationMesh: 1C47C6:AlternatePerspective.esp
+  Point: -9.8153305, -409.07303, 8.647049
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 1C47BE:AlternatePerspective.esp
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 1C4703:AlternatePerspective.esp
 - NavigationMesh: 42E8FD:AlternatePerspective.esp
   Unknown: 32
   Point: 17394.227, -79424.24, 8655.39
@@ -1213,118 +1246,85 @@ MapInfos:
     MutagenObjectType: NavigationMapInfoWorldParent
     ParentWorldspace: 00003C:Skyrim.esm
     ParentWorldspaceCoord: -20, 4
-- NavigationMesh: 1C47C6:AlternatePerspective.esp
-  Point: -9.8153305, -409.07303, 8.647049
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 1C47BE:AlternatePerspective.esp
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 1C4703:AlternatePerspective.esp
-- NavigationMesh: 0E56BE:AlternatePerspective.esp
-  Point: 5297.3037, 12508.662, 1280.2609
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 0E56C3:AlternatePerspective.esp
-  - Unknown: -460622861
-    Door: 0E56C4:AlternatePerspective.esp
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 0D5AC1:AlternatePerspective.esp
-- NavigationMesh: 1CEBE9:AlternatePerspective.esp
-  Point: -29.455082, -23.84269, 100.76739
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 1CEAF3:AlternatePerspective.esp
-  - Unknown: -460622861
-    Door: 1CEAF4:AlternatePerspective.esp
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 1CEAEF:AlternatePerspective.esp
-- NavigationMesh: 04781E:AlternatePerspective.esp
-  Point: 2153.0823, -528.70593, 2.357525E-05
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 03D4F2:AlternatePerspective.esp
-  - Unknown: -460622861
-    Door: 00591E:AlternatePerspective.esp
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 005900:AlternatePerspective.esp
-- NavigationMesh: 0E56BF:AlternatePerspective.esp
+- NavigationMesh: 42E8FB:AlternatePerspective.esp
   Unknown: 32
-  Point: 4026.9395, 10475.598, 747.1647
-  Island:
-    Min: 3956.3672, 10407.497, 747.16174
-    Max: 4094.1265, 10545.801, 747.1708
-    Triangles:
-    - 0, 1, 2
-    - 3, 2, 1
-    Vertices:
-    - 3956.3672, 10407.497, 747.16974
-    - 4093.5754, 10410.263, 747.16174
-    - 3962.9797, 10538.056, 747.16174
-    - 4094.1265, 10545.801, 747.16174
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 0D5AC1:AlternatePerspective.esp
-- NavigationMesh: 42E900:AlternatePerspective.esp
-  Unknown: 32
-  Point: 16540.09, -80317.18, -154758.94
-  Island:
-    Min: 16384, -80482.53, -154774.38
-    Max: 16679.34, -80188.77, -154746.69
-    Triangles:
-    - 0, 1, 4
-    - 4, 2, 3
-    - 4, 0, 1
-    - 3, 0, 4
-    Vertices:
-    - 16679.34, -80482.53, -154765.84
-    - 16675.795, -80236.95, -154748.8
-    - 16384, -80415.555, -154766.3
-    - 16582.469, -80470.78, -154774.38
-    - 16384, -80188.77, -154757.2
-  Unknown2: -1511415748
-  Parent:
-    MutagenObjectType: NavigationMapInfoWorldParent
-    ParentWorldspace: 00003C:Skyrim.esm
-    ParentWorldspaceCoord: -20, 4
-- NavigationMesh: 42E8FE:AlternatePerspective.esp
-  Unknown: 32
-  Point: 16426.715, -81220.8, 8307.925
+  Point: 16704.617, -80747.46, 8222.482
   MergedTo:
   - 368EDD:AlternatePerspective.esp
-  LinkedDoors:
-  - Unknown: -460622861
-    Door: 21961C:AlternatePerspective.esp
   Island:
-    Min: 16384, -81318.23, 8255.494
-    Max: 16477.781, -81130.445, 8346.884
+    Min: 16384, -80893.89, 8201.554
+    Max: 17016.074, -80591.99, 8260.964
     Triangles:
-    - 0, 1, 2
-    - 3, 1, 0
+    - 6, 1, 7
+    - 0, 3, 2
+    - 0, 4, 3
+    - 4, 5, 3
+    - 0, 2, 6
+    - 7, 0, 6
     Vertices:
-    - 16460.9, -81318.23, 8346.884
-    - 16384, -81130.445, 8255.494
-    - 16384, -81298.695, 8292.781
-    - 16477.781, -81136.45, 8336.282
+    - 16692.453, -80876.984, 8211.297
+    - 16384, -80893.89, 8201.554
+    - 16743.018, -80630.63, 8217.238
+    - 16841.621, -80637.88, 8230.309
+    - 16975.621, -80751.4, 8248.131
+    - 17016.074, -80665.66, 8260.727
+    - 16384, -80591.99, 8203.93
+    - 16485.133, -80889.06, 8206.782
   Unknown2: -1511415748
   Parent:
     MutagenObjectType: NavigationMapInfoWorldParent
     ParentWorldspace: 00003C:Skyrim.esm
     ParentWorldspaceCoord: -20, 4
-- NavigationMesh: 3364D0:AlternatePerspective.esp
-  Point: 2176.9282, 2126.59, 112.35876
+- NavigationMesh: 433A02:AlternatePerspective.esp
+  Point: 5.0085115, 112.0415, 195.46248
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 1C47BF:AlternatePerspective.esp
+  - Unknown: -460622861
+    Door: 1B53BC:AlternatePerspective.esp
   Unknown2: -1511415748
   Parent:
     MutagenObjectType: NavigationMapInfoCellParent
-    ParentCell: 2C1D00:AlternatePerspective.esp
+    ParentCell: 1B53BB:AlternatePerspective.esp
+- NavigationMesh: 42E8FF:AlternatePerspective.esp
+  Unknown: 32
+  Point: 18328.838, -80635.67, 8515.43
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 1CEAEE:AlternatePerspective.esp
+  Island:
+    Min: 17974.246, -80856.6, 8515.43
+    Max: 18918.328, -80133.484, 8515.43
+    Triangles:
+    - 0, 5, 1
+    - 6, 7, 5
+    - 5, 7, 1
+    - 0, 1, 2
+    - 4, 7, 6
+    - 0, 3, 5
+    Vertices:
+    - 18113.97, -80136.375, 8515.43
+    - 18918.328, -80830.57, 8515.43
+    - 18910.775, -80657.02, 8515.43
+    - 17974.246, -80136.375, 8515.43
+    - 18151.734, -80850.82, 8515.43
+    - 17985.574, -80466.12, 8515.43
+    - 17996.904, -80856.6, 8515.43
+    - 18223.484, -80839.25, 8515.43
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoWorldParent
+    ParentWorldspace: 00003C:Skyrim.esm
+    ParentWorldspaceCoord: -20, 4
+- NavigationMesh: 3E7AF9:AlternatePerspective.esp
+  Point: 297.45352, 536.22974, 0.11151307
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0752F3:AlternatePerspective.esp
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 075286:AlternatePerspective.esp
 - NavigationMesh: 0EE983:Skyrim.esm
   Unknown: 32
   Point: 10558.483, -82639.26, 6863.566
@@ -7149,20 +7149,20 @@ PreferredPathing:
   - Navmeshes:
     - 0A3F44:Skyrim.esm
   NavmeshTree:
-  - NavMesh: 0E88CC:Skyrim.esm
-    NodeIndex: 6
-  - NavMesh: 105E9A:Skyrim.esm
-  - NavMesh: 0A3F44:Skyrim.esm
-    NodeIndex: 8
-  - NavMesh: 0B87DF:Skyrim.esm
-    NodeIndex: 4
-  - NavMesh: 100F4B:Skyrim.esm
-    NodeIndex: 3
   - NavMesh: 10377B:Skyrim.esm
     NodeIndex: 1
-  - NavMesh: 103120:Skyrim.esm
-    NodeIndex: 2
-  - NavMesh: 079BBF:Skyrim.esm
-    NodeIndex: 5
   - NavMesh: 1030CB:Skyrim.esm
     NodeIndex: 7
+  - NavMesh: 079BBF:Skyrim.esm
+    NodeIndex: 5
+  - NavMesh: 105E9A:Skyrim.esm
+  - NavMesh: 0B87DF:Skyrim.esm
+    NodeIndex: 4
+  - NavMesh: 103120:Skyrim.esm
+    NodeIndex: 2
+  - NavMesh: 0A3F44:Skyrim.esm
+    NodeIndex: 8
+  - NavMesh: 0E88CC:Skyrim.esm
+    NodeIndex: 6
+  - NavMesh: 100F4B:Skyrim.esm
+    NodeIndex: 3

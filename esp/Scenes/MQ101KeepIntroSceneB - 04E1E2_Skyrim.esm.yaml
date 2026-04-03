@@ -1067,7 +1067,6 @@ Actions:
   StartPhase: 26
   EndPhase: 26
   TimerSeconds: 2
-Unused2: {}
 Quest: 03372B:Skyrim.esm
 LastActionIndex: 86
 VNAM: 0x03000000030000000300000003000000

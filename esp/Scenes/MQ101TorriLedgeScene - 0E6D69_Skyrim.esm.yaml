@@ -230,7 +230,6 @@ Actions:
   EndPhase: 8
   Packages:
   - 0FE42D:Skyrim.esm
-Unused2: {}
 Quest: 03372B:Skyrim.esm
 LastActionIndex: 19
 VNAM: 0x03000000030000000300000003000000

@@ -3,7 +3,7 @@ Flags:
   Flags:
   - Random
   ResetHours: 0.9997711
-PreviousDialog: 34FA08:AlternatePerspective.esp
+PreviousDialog: 34FA07:AlternatePerspective.esp
 FavorLevel: None
 Responses:
 - Emotion: Anger

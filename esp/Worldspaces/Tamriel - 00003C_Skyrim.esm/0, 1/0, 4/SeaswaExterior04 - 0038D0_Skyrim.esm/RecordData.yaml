@@ -9,7 +9,7 @@ Flags:
 - HasWater
 Grid:
   Point: 4, 38
-  Flags: 868571392
+  Flags: 855927296
 MaxHeightData:
   Offset: -13952
   HeightMap:
@@ -47,10 +47,10 @@ MaxHeightData:
   - [3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 WaterHeight: 3.4028235E+38
 Regions:
-- 101226:Skyrim.esm
-- 1085C1:Skyrim.esm
-- 0C5852:Skyrim.esm
 - 0C5859:Skyrim.esm
+- 0C5852:Skyrim.esm
+- 1085C1:Skyrim.esm
+- 101226:Skyrim.esm
 Landscape:
   FormKey: 0048D0:Skyrim.esm
   IsCompressed: True

@@ -11,12 +11,12 @@ Playable: True
 Hidden: True
 Effects:
 - MutagenObjectType: PerkEntryPointModifyValue
-  EntryPoint: ModIncomingDamage
-  PerkConditionTabCount: 3
+  EntryPoint: ModIncomingSpellMagnitude
+  PerkConditionTabCount: 2
   Modification: Multiply
   Value: 0.1
 - MutagenObjectType: PerkEntryPointModifyValue
-  EntryPoint: ModIncomingSpellMagnitude
-  PerkConditionTabCount: 2
+  EntryPoint: ModIncomingDamage
+  PerkConditionTabCount: 3
   Modification: Multiply
   Value: 0.1

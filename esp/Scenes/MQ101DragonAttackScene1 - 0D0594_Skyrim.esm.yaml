@@ -853,7 +853,6 @@ Actions:
   StartPhase: 14
   EndPhase: 14
   TimerSeconds: 5
-Unused2: {}
 Quest: 0D0593:Skyrim.esm
 LastActionIndex: 124
 VNAM: 0x00000000000000000000000000000000

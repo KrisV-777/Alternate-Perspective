@@ -261,7 +261,6 @@ Actions:
   EndPhase: 0
   Packages:
   - 20A315:AlternatePerspective.esp
-Unused2: {}
 Quest: 03372B:Skyrim.esm
 LastActionIndex: 19
 VNAM: 0x02000000020000000100000003000000

@@ -94,7 +94,7 @@ Function knockoutPlayer()
   DisablePlayerControls(abCamSwitch = true, abLooking = true)
   Utility.Wait(0.3) ; Imod
   ForceFirstPerson()
-  SetHudCartMode()
+  SetHudCartMode(true)
   PlayerRef.PlayIdle(IdleDLC1BossExplosion1stP)
   Utility.Wait(3) ; Imod
   Master.Mute()
@@ -112,6 +112,7 @@ Function knockoutPlayer()
   PlayerRef.ResetHealthAndLimbs()
   FadeToBlackHoldImod.PopTo(FadeUpFromBlack) ; fade the Screen back in
   PlayerRef.PlayIdle(TG05_GetUp)
+  SetHudCartMode(false)
   ; Player should be free to move now & escape Helgen.
 EndFunction
 
