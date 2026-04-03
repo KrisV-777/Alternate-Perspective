@@ -1,4 +1,4 @@
-name: Build & Conditional Release
+name: Build and Conditional Release
 
 on:
   push:
@@ -7,29 +7,36 @@ on:
   pull_request:
     branches:
       - main
-      
+
+permissions:
+  contents: read
+
 concurrency:
   group: ci-release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   prepare:
-    name: Determine whether release is needed
+    name: Resolve project version and release state
     runs-on: windows-latest
+    timeout-minutes: 10
     outputs:
       version: ${{ steps.version.outputs.version }}
       latest_release_version: ${{ steps.version.outputs.latest_release_version }}
+      release_tag: ${{ steps.version.outputs.release_tag }}
       should_release: ${{ steps.version.outputs.should_release }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-tags: true
+          fetch-depth: 0
 
       - name: Resolve project version
         id: version
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
+
           $ppjPath = 'AltPersp.ppj'
           if (-not (Test-Path $ppjPath)) {
             throw "Could not find $ppjPath"
@@ -42,7 +49,6 @@ jobs:
           }
 
           $currentVersion = $versionMatch.Groups[1].Value.Trim()
-
           $latestTag = git tag --list 'v*' --sort=-v:refname |
             Where-Object { $_ -match '^v\d+\.\d+\.\d+.*$' } |
             Select-Object -First 1
@@ -61,9 +67,10 @@ jobs:
             $currentVersion -ne $latestVersion
           }
 
-          "version=$currentVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          "latest_release_version=$latestVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          "should_release=$($shouldRelease.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "version=$currentVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "latest_release_version=$latestVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "release_tag=v$currentVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "should_release=$($shouldRelease.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 
           Write-Host "Current version: $currentVersion"
           Write-Host "Latest release version: $latestVersion"
@@ -71,9 +78,8 @@ jobs:
 
   build-plugin:
     name: Build ESP from Spriggit files
-    needs: prepare
-    if: ${{ needs.prepare.outputs.should_release == 'true' }}
     runs-on: windows-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -91,18 +97,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: pwsh
         run: |
-          gh release download -R Mutagen-Modding/Spriggit --pattern "SpriggitCLI.zip" --dir .github
-          7z x .github/SpriggitCLI.zip -o".github/spriggit/"
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Path .github -Force | Out-Null
+          gh release download -R Mutagen-Modding/Spriggit --pattern "SpriggitCLI.zip" --dir .github --clobber
+          7z x .github/SpriggitCLI.zip -o".github/spriggit/" -y
           if (-not (Test-Path ".github/spriggit/Spriggit.CLI.exe")) {
-            Write-Error "Spriggit.CLI.exe not found after extraction."
-            exit 1
+            throw 'Spriggit.CLI.exe not found after extraction.'
           }
 
       - name: Deserialize ESP
         shell: pwsh
-        run: .github\spriggit\Spriggit.CLI.exe deserialize --InputPath "esp" --OutputPath "AlternatePerspective.esp"
+        run: |
+          $ErrorActionPreference = 'Stop'
+          .github\spriggit\Spriggit.CLI.exe deserialize --InputPath "esp" --OutputPath "AlternatePerspective.esp"
 
-      - name: Upload Plugin Artifact
+      - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
         with:
           name: plugin
@@ -110,14 +119,13 @@ jobs:
 
   compile-scripts:
     name: Compile Papyrus scripts
-    needs: prepare
-    if: ${{ needs.prepare.outputs.should_release == 'true' }}
     runs-on: windows-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache Script Sources
+      - name: Cache script sources
         id: cache-ss
         uses: actions/cache@v4
         with:
@@ -126,28 +134,35 @@ jobs:
             .github/Papyrus/skse64
             .github/Papyrus/jcontainersse
             .github/Papyrus/Base/TESV_Papyrus_Flags.flg
-          key: script-sources-clean
+          key: script-sources-clean-v2
 
-      - name: Cache Compiler
+      - name: Cache compiler
         id: cache-com
         uses: actions/cache@v4
         with:
           path: .github/Caprica
-          key: ${{ runner.os }}-papyrus-compiler
+          key: ${{ runner.os }}-papyrus-compiler-0.3.0a
 
-      - name: Fetch Caprica 0.3.0
+      - name: Fetch Caprica
         if: steps.cache-com.outputs.cache-hit != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: pwsh
         run: |
-          gh release download -O .github/Caprica.7z -p '*.7z' -R KrisV-777/Caprica 0.3.0a
-          7z x .github/Caprica.7z "-o.github\Caprica"
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Path .github -Force | Out-Null
+          gh release download 0.3.0a -R KrisV-777/Caprica --pattern "Caprica.zip" --dir .github --clobber
+          7z x .github/Caprica.zip "-o.github\Caprica" -y
 
-      - name: Checkout TESVScripts Sources
+          if (-not (Test-Path ".github/Caprica/Caprica.exe")) {
+            throw 'Caprica.exe not found after extraction.'
+          }
+
+      - name: Checkout TESVScripts sources
         if: steps.cache-ss.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
           New-Item -ItemType Directory -Path .github/Papyrus/Base -Force | Out-Null
           Push-Location .github/Papyrus/Base
           git init
@@ -158,10 +173,11 @@ jobs:
           Remove-Item .git -Recurse -Force
           Pop-Location
 
-      - name: Checkout Papyrus Sources
+      - name: Checkout Papyrus dependency sources
         if: steps.cache-ss.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
           New-Item -ItemType Directory -Path .github/Papyrus -Force | Out-Null
           $repos = @('skse64/source', 'jcontainersse/source')
           Push-Location .github/Papyrus
@@ -178,10 +194,11 @@ jobs:
           }
           Pop-Location
 
-      - name: Checkout TESV Flags File
+      - name: Checkout TESV flags file
         if: steps.cache-ss.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
           Push-Location .github/Papyrus/Base
           New-Item -ItemType Directory -Name temp -Force | Out-Null
           Push-Location temp
@@ -199,19 +216,21 @@ jobs:
       - name: Run Caprica
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
           .github/Caprica/Caprica.exe --game skyrim --import ".github/Papyrus/Base;.github/Papyrus/skse64;.github/Papyrus/jcontainersse;" --output "Scripts" --flags=".github/Papyrus/Base/TESV_Papyrus_Flags.flg" "${{ github.workspace }}/Source/Scripts" -R -q
 
-      - name: Upload Compiled Scripts
+      - name: Upload compiled scripts
         uses: actions/upload-artifact@v4
         with:
           name: compiled-scripts
           path: Scripts
 
-  release:
-    name: Package and publish release
-    needs: [prepare, build-plugin, compile-scripts]
-    if: ${{ needs.prepare.outputs.should_release == 'true' }}
+  build-translations:
+    name: Build translation assets
+    permissions:
+      contents: write
     runs-on: windows-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -222,24 +241,70 @@ jobs:
           python-version: '3.x'
 
       - name: Run translations
-        run: python tools/translation.py
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python tools/translation.py
 
-      - name: Download Plugin Artifact
+      - name: Commit generated translation stubs
+        if: github.event_name == 'push'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          $changes = git status --porcelain Interface/Translations
+          if ($changes) {
+            git add Interface/Translations
+            git commit -m "chore: add generated translation stubs [skip ci]"
+            git push
+          } else {
+            Write-Host 'No new translation stubs to commit.'
+          }
+
+      - name: Upload translated interface
+        uses: actions/upload-artifact@v4
+        with:
+          name: translated-interface
+          path: Interface
+
+  package-artifacts:
+    name: Package release archives
+    needs:
+      - prepare
+      - build-plugin
+      - compile-scripts
+      - build-translations
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download plugin artifact
         uses: actions/download-artifact@v4
         with:
           name: plugin
 
-      - name: Download Compiled Scripts
+      - name: Download compiled scripts
         uses: actions/download-artifact@v4
         with:
           name: compiled-scripts
           path: Scripts
+
+      - name: Download translated interface
+        uses: actions/download-artifact@v4
+        with:
+          name: translated-interface
+          path: staging
 
       - name: Package release archives
         shell: pwsh
         env:
           VERSION: ${{ needs.prepare.outputs.version }}
         run: |
+          $ErrorActionPreference = 'Stop'
+
           $version = $env:VERSION
           if ([string]::IsNullOrWhiteSpace($version)) {
             throw 'Version output is empty.'
@@ -249,11 +314,13 @@ jobs:
 
           $mainName = "AlternatePerspective-$version"
           $mainRoot = Join-Path dist $mainName
+          if (Test-Path $mainRoot) {
+            Remove-Item -Path $mainRoot -Recurse -Force
+          }
           New-Item -ItemType Directory -Path $mainRoot -Force | Out-Null
 
           $mainIncludes = @(
             'AlternatePerspective.esp',
-            'Interface',
             'meshes',
             'Scripts',
             'SKSE',
@@ -269,7 +336,13 @@ jobs:
             }
           }
 
-          Compress-Archive -Path "$mainRoot/*" -DestinationPath (Join-Path dist "$mainName.zip") -Force
+          Copy-Item staging/Interface -Destination $mainRoot -Recurse -Force
+
+          $mainArchive = Join-Path dist "$mainName.zip"
+          if (Test-Path $mainArchive) {
+            Remove-Item -Path $mainArchive -Force
+          }
+          Compress-Archive -Path "$mainRoot/*" -DestinationPath $mainArchive -Force
 
           $patches = @(
             @{ Folder = 'AE Bone Wolf'; Name = 'AlternatePerspective-AE-Bone-Wolf.zip' },
@@ -280,21 +353,45 @@ jobs:
 
           foreach ($patch in $patches) {
             $folderPath = Join-Path patches $patch.Folder
-            if (Test-Path $folderPath) {
-              Compress-Archive -Path "$folderPath/*" -DestinationPath (Join-Path dist $patch.Name) -Force
+            if (-not (Test-Path $folderPath)) {
+              continue
             }
+
+            $archivePath = Join-Path dist $patch.Name
+            if (Test-Path $archivePath) {
+              Remove-Item -Path $archivePath -Force
+            }
+
+            Compress-Archive -Path "$folderPath/*" -DestinationPath $archivePath -Force
           }
 
-      - name: Upload release artifacts
+      - name: Upload packaged artifacts
         uses: actions/upload-artifact@v4
         with:
           name: release-files-${{ needs.prepare.outputs.version }}
           path: dist/*.zip
 
+  publish-release:
+    name: Publish GitHub release
+    if: ${{ github.event_name == 'push' && needs.prepare.outputs.should_release == 'true' }}
+    permissions:
+      contents: write
+    needs:
+      - prepare
+      - package-artifacts
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download packaged release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-files-${{ needs.prepare.outputs.version }}
+          path: dist
+
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ needs.prepare.outputs.version }}
+          tag_name: ${{ needs.prepare.outputs.release_tag }}
           name: Alternate Perspective v${{ needs.prepare.outputs.version }}
           generate_release_notes: true
           files: dist/*.zip
