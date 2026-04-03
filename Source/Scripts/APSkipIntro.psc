@@ -45,7 +45,7 @@ Function PrepHelgen()
 	QF_MQ101_0003372B_new  qstScr = MQ101 as QF_MQ101_0003372B_new ; Get MQ101 Quest Script
 	qstScr.HelgenDisEnabMarker.DisableNoWait() ; Disable all AP specific NPC
 
-	QF_MQ101DragonAttack_000D0593 drScr = (qstScr.MQ101DragonAttack as Quest) as  QF_MQ101DragonAttack_000D0593
+	QF_MQ101DragonAttack_000D0593 drScr = qstScr.MQ101DragonAttack as  QF_MQ101DragonAttack_000D0593
 
 	;Clutter
 	drScr.PostCGAreaBClutter.enableNoWait()

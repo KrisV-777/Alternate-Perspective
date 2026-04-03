@@ -76,9 +76,9 @@ EndFunction
 
 PlayerVampireQuestScript Property VampireQ  Auto
 
-Function IntroStart(string eventName, string strArg, float numArg, Form sender)
+Event IntroStart(string eventName, string strArg, float numArg, Form sender)
 	Stop()
-EndFunction
+EndEvent
 
 Outfit Property VampArmor  Auto
 

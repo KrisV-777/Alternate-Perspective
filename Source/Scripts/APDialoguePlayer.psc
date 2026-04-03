@@ -17,7 +17,7 @@ Event OnPlayerLoadGame()
 	RegisterForModEvent("AP_MessengerMenuStart", "QuestStart")
 EndEvent
 
-Function MenuOpen(string asEventName, string asStringArg, float afNumArg, form akSender)
+Event MenuOpen(string asEventName, string asStringArg, float afNumArg, form akSender)
   UI.OpenCustomMenu(MENUPATH)
 	bool j0 = SKSE.GetPluginVersion("JContainers64") == -1
 	bool j1 = SKSE.GetPluginVersion("JContainersGOG") == -1
@@ -42,9 +42,9 @@ Function MenuOpen(string asEventName, string asStringArg, float afNumArg, form a
 		EndWhile
 		UI.InvokeStringA("CustomMenu", "_root.main.openMenu", files)
 	EndIf
-EndFunction
+EndEvent
 
-Function MenuSelect(string asEventName, string asStringArg, float afNumArg, form akSender)
+Event MenuSelect(string asEventName, string asStringArg, float afNumArg, form akSender)
 	String msgErr = "[Alternate Perspective]\nInvalid Intro Quest:\n\n"
 	If (afNumArg == -1)
 		startingQuest = none
@@ -62,5 +62,5 @@ Function MenuSelect(string asEventName, string asStringArg, float afNumArg, form
 	Else
 		Debug.Trace("[Alternate Perspective] Quest selected: " + asStringArg + "/" + afNumArg as int + " / Name (May be empty):" + startingQuest.GetName())
 	EndIf
-EndFunction
+EndEvent
 

@@ -12,7 +12,7 @@ quest property MQ101 auto
 ;****************************
 
 Event onLoad()
-	myLink = getLinkedRef() as ObjectReference
+	myLink = getLinkedRef()
 	if (myDaysPassed <= gGameDaysPassed.getValue()) && (game.getPlayer().IsInLocation(myLocation) == false)
 		if (MQ101.IsCompleted())
 			myLink.enable()

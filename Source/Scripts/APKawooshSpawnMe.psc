@@ -13,7 +13,7 @@ Event OnCellLoad()
   Wave = 0
 EndEvent
 
-Function Spawning(string eventName, string strArg, float numArg, Form sender)
+Event Spawning(string eventName, string strArg, float numArg, Form sender)
   ; Debug.Trace("AP: Spawning Actor")
   ActorBase toPlace = fetchActorInstance(Waves[Wave])
   If(!toPlace)
@@ -23,7 +23,7 @@ Function Spawning(string eventName, string strArg, float numArg, Form sender)
   Utility.Wait(0.1)
   (PlaceActorAtMe(toPlace, 0)).AddSpell(DeathTrack)
   Wave += 1
-EndFunction
+EndEvent
 
 ActorBase Function fetchActorInstance(LeveledActor instance)
   Form tmp = instance.GetNthForm(Utility.RandomInt(0, instance.GetNumForms() - 1))
