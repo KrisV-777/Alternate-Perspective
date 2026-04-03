@@ -37,7 +37,6 @@ en_contents = open(en_path, "rb").read()
 for l in languages:
   new_path = join(path, f_raw + l + ".txt")
   if isfile(new_path) and open(new_path, "rb").read() == en_contents:
-    print(f"{new_path} is already up to date")
     continue
   shutil.copyfile(en_path, new_path)
 

@@ -296,7 +296,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: translated-interface
-          path: staging
+          path: staging/Interface
 
       - name: Package release archives
         shell: pwsh
