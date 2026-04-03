@@ -1,4 +1,4 @@
-name: Release On Version Change
+name: Build & Conditional Release
 
 on:
   push:
